@@ -1,0 +1,53 @@
+LICENSA.txt Versão 1.1.
+=======================
+
+LICENSA PARA O PÚBLICO PORTUGUÊS.
+=================================
+
+Este software foi produzido por Rodrigo Z. Armond (rodzadra@yahoo.com).
+
+Caso queira usar este software você pode usá-lo sem ter que pagar nada por ele, com algumas exceções:
+
+Este software pode ser usado somente para fins não comerciais. (se vc fizer um produto derivado deste e cobrar por ele, então vc deve registrá-lo junto ao autor (Rodrigo Z. Armond).)
+
+Você pode modificá-lo a vontade, mas sempre terá que distribuí-lo com este arquivo (LICENCA.txt) e não poderá modificar o cabeçalho dos arquivos, o qual contém a autoria do software.
+
+Se você usar SOMENTE PARTES desse software em outro projeto, você tem que pedir autorização ao autor.
+
+Caso venha a usá-lo, o autor não poderá ser responsável por nenhum dano causado pelo uso do mesmo.
+
+Por se tratar de um software livre, ele vem SEM NENHUMA GARANTIA nem ALGUM TIPO DE SUPORTE do autor.
+
+Este software PODE SER EXPORTADO para TODOS os países do mundo, incluíndo os países os quais os EUA mantém algum tipo de embargo.:)
+
+Esta licença poderá ser alterada a qualquer momento sem um prévio aviso.
+
+Caso não concorde com esses "termos" você não é autorizado a utilizar este software e deve desinstalar/destruír qualquer cópia do mesmo.
+
+- ---- fim.
+
+
+LICENSE FOR THE ENGLISH PUBLIC.
+===============================
+
+HOW I DONT SPEAK ENGLISH, THE VALID LICENSE WILL BE EVER THE PORTUGUESE VERSION. THIS TRADUCTION IS JUST TO GIVE AN IDEA OF THE PORTUGUESE LICENSE FOR THE ENGLISH PUBLIC.
+
+This software was made by Rodrigo Z. Armond (rodzadra@yahoo.com).
+
+If you would use this software, you can use this without have to pay nothing for it, WITH SOME EXCEPTIONS:
+
+This software only can be used for non commercial use.
+
+You can modify how you like, but you EVER NEED to distribute this software with this file (LICENCA.txt) and CAN NOT modify the header of files, where has the author name of the software.
+
+If you use just PARTS of this software in others project, you need to ask the author authotization.
+
+If you come to use this, the author CAN NOT be resposabilized for none of damange.
+
+This is an free software, and this come WITH NO WARRANTY and NO SUPPORT from the author.
+
+This software CAN BE exported to ALL country in the world, this includes IRAK, CUBA, CHINA AND ANY COUNTRY THAT THE EUA USUALLY INTERDIT.:)
+
+This license can be modifyied without notice.
+
+If you dont concord with this license, you are not authorized to use this software and you must desistall any copy of the software.

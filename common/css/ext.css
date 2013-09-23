@@ -1,0 +1,123 @@
+/**
+* Stylesheet for external inclusion page
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu"), url("../media/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
+}
+/* Bordini di firefox */
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	font-family: "Ubuntu";
+}
+iframe, object {
+	border: 0px none !important;
+}
+
+#lateral_panel {
+	background-color: #333;
+	color: #f0f0f0;
+	box-shadow: 0 0 90px #000 inset;
+	position: relative;
+	top: 0;
+	right: 0;
+	width: 250px;
+	height: 100%;
+	z-index: 3;
+	opacity: 0.75;
+}
+#lateral_panel.right {
+	float: right;
+}
+#lateral_panel table {
+	color: #f0f0f0;
+}
+
+#content {
+	position: absolute;
+	width: 78%;
+	height: 100%;
+	top: 0px;
+	left: 250px;
+}
+
+
+/* SEARCH ENGINE VARS */
+table#steps {
+	padding: 0 10px;
+}
+table#steps > tbody > tr:first-child {
+	background-image: -moz-radial-gradient(center center , white 27%, transparent);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	background-size: 93% 1px;
+}
+table#steps td {
+	border: 0px none;
+}
+td#step_no {
+	font-size: 108px;
+	width: 36%;
+	text-align: right;
+}
+td#step_title {
+	font-weight: bold;
+}
+div#step_description {
+	height: 50%;
+	font-size: 13px;
+	color: #fff;
+	padding: 45px 15px 5px 15px;
+	text-align: justify;
+}
+#arrows {
+	padding: 0 15px 0 10px;
+	width: 100%;
+	position: absolute;
+	bottom: 30px;
+}
+#arrows a {
+	padding: 32px;
+}
+#prev_step:hover, #next_step:hover {
+	cursor: pointer;
+}
+#prev_step {
+	background: url(../media/img/arrow_full_left_64_fff.png) left center no-repeat;
+	display: none;
+}
+#next_step {
+	background: url(../media/img/arrow_full_right_64_fff.png) right center no-repeat;
+	float: right;
+	display: none;
+}
+#skip_step {
+	background: url(../media/img/controls_skip_64_fff.png) right center no-repeat;
+	float: right;
+	display: none;
+}
+div#steps_no {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: 12px;
+	text-align: right;
+	padding: 5px 10px 5px 5px;
+}

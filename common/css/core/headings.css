@@ -1,0 +1,38 @@
+/**
+* Main System GUI stylesheet - headings style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+h1 {
+	font-size: 19px;
+}
+h2 {
+	font-size: 17px;
+}
+h3 {
+	font-size: 16px;
+}
+h4 {
+	font-size: 15px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 13px;
+}
+hr {
+	background: url(../media/img/menu_hr.png) center top no-repeat;
+	background-size: 96% 1px;
+	margin: 27px 0;
+	border: 0px none;
+}

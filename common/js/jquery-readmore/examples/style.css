@@ -1,0 +1,14 @@
+body {
+  font: 16px/22px arial, helvetica, sans-serif;
+  padding: 40px 0;
+}
+a {
+  color: #234fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 600px;
+}

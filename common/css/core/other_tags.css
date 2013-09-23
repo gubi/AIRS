@@ -1,0 +1,53 @@
+/**
+* Main System GUI stylesheet - Generic tags style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Ubuntu,"Ubuntu Beta",UbuntuBeta,"Bitstream Vera Sans","DejaVu Sans",Tahoma,sans-serif;
+	font-size: 13px;
+	color: #333;
+	background-color: #fff;
+}
+
+figure {
+	width: auto;
+}
+
+acronym {
+	cursor: help;
+	border-bottom: #aaa 1px dotted;
+}
+
+tt {
+	padding: 2px;
+	background-color: #fafafa;
+	border: #dedede 1px solid;
+	line-height: 2.5em;
+	box-shadow: 0 0 12px #e3e3e3;
+}
+tt.heart {
+	background-color: transparent;
+	padding: 0;
+	border: 0px none;
+	line-height: 1em;
+	box-shadow: 0 0 0 transparent !important;
+	color: #cc5e5e;
+	font-size: 1.1em;
+}

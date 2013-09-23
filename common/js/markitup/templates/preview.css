@@ -1,0 +1,17 @@
+body {
+	background-image: none;
+	background-color: transparent;
+	padding: 5px 0;
+}
+#preview_title {
+	color: #f00;
+	border-bottom: #f00 2px solid;
+	padding: 0 0 2px 0;
+	text-align: right;
+}
+#content_body {
+	background-image: none;
+	background-color: transparent;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}

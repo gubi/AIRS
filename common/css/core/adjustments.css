@@ -1,0 +1,48 @@
+/**
+* Main System GUI stylesheet - generic adjusments
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+/* Firefox borders */
+:focus {
+	outline: none !important;
+}
+::-moz-focus-inner {
+	border: 0 !important;
+	padding: 0 !important;
+}
+
+
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+	from { -moz-transform: rotate(0deg); }
+	to { -moz-transform: rotate(360deg); }
+}
+@-ms-keyframes spin {
+	from { -ms-transform: rotate(0deg); }
+	to { -ms-transform: rotate(360deg); }
+}
+@-webkit-keyframes back-spin {
+	from { -webkit-transform: rotate(360deg); }
+	to { -webkit-transform: rotate(0deg); }
+}
+@-moz-keyframes back-spin {
+	from { -moz-transform: rotate(360deg); }
+	to { -moz-transform: rotate(0deg); }
+}
+@-ms-keyframes back-spin {
+	from { -ms-transform: rotate(360deg); }
+	to { -ms-transform: rotate(0deg); }
+}

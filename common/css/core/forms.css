@@ -1,0 +1,131 @@
+/**
+* Main System GUI stylesheet - form and inputs style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+form fieldset th {
+	text-align: right;
+	width: 130px;
+}
+form fieldset td {
+	padding: 0 !important;
+}
+
+input, textarea {
+	border: #ccc 1px solid;
+	padding: 3px;
+	font-family: "Ubuntu";
+	font-size: 13px;
+}
+input:-moz-placeholder {
+	font-style:italic !important;
+	color: #aaa !important;
+}
+input[type="checkbox"] {
+	margin-left: 0;
+}
+input[type="submit"], input[type="submit"]:visited, button, button:visited, a.btn, a.btn:visited {
+	float: right;
+	background-color: #f0f0f0;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	padding: 5px 10px;
+	margin-top: -1px;
+	box-shadow: 0px 0px 6px #ccc inset;
+}
+
+input[type="submit"]:hover, button:hover {
+	background-color: #fafafa;
+	cursor: pointer;
+	box-shadow: 0px 0px 6px #ccc inset;
+}
+input[type="submit"]:active, input[type="submit"]:focus, button:active, button:focus, a.btn:focus {
+	background-color: #f6f6f6;
+	box-shadow: 0px 0px 9px #dedede inset;
+}
+input[type="submit"].restore, input[type="submit"].restore:visited {
+	background: url(../media/img/accept_32.png) center center no-repeat;
+	margin-bottom: -10px;
+	padding: 16px;
+	float: none;
+}
+input[type="submit"].delete, input[type="submit"].delete:visited {
+	background-color: #cf4d4d;
+	color: #fff;
+	box-shadow: 0px 0px 6px #9f1d1d inset;
+	float: left;
+}
+input[type="submit"].delete:hover {
+	background-color: #df6161;
+	cursor: pointer;
+	box-shadow: 0px 0px 6px #9f1d1d inset;
+}
+input[type="submit"].delete:active, input[type="submit"].delete:focus {
+	background-color: #df5353;
+	box-shadow: 0px 0px 9px #cf4d4d inset;
+}
+input[type="text"]:hover, textarea:hover {
+	border: #999 1px solid;
+	box-shadow: 0px 0px 3px #f0f0f0;
+}
+input[type="text"]:active, input[type="text"]:focus, input[type="search"]:active, input[type="search"]:focus, input[type="password"]:active, input[type="password"]:focus, textarea:active, textarea:focus {
+	border: #999 1px solid;
+	font-size: 18px;
+	box-shadow: 0px 0px 9px #ccc;
+}
+input[type="email"] {
+	width: 50%;
+}
+input[disabled="disabled"], textarea[disabled="disabled"]{
+	background-color: #f0f0f0;
+}
+
+textarea#page_content:active, textarea#page_content:focus, textarea.no_focus:active, textarea.no_focus:focus, input.no_focus:active, input.no_focus:focus {
+	font-size: 13px;
+}
+
+button {
+	border: #ccc 1px solid;
+}
+
+select[multiple] > option:nth-child(even) {
+	background-color: #fafafa;
+}
+optgroup {
+	margin-bottom: 10px;
+	padding: 2px;
+}
+optgroup:last-child {
+	margin-bottom: 0px;
+}
+optgroup[label] {
+	font-size: 13px;
+}
+
+label {
+	text-indent: 0;
+	line-height: 18px;
+}
+label:hover {
+	cursor: pointer;
+}
+
+input.error, select.error {
+	background-image: none !important;
+	padding-left: 3px;
+	color: #cc0000;
+	box-shadow: 0 0 6px #cc0000 !important;
+	font-weight: normal;
+}
+	input.error + span, select.error + span {
+		margin-left: 6px;
+	}

@@ -1,0 +1,64 @@
+/**
+* Main System GUI stylesheet - blockquote style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+blockquote {
+	padding: 1px 7.5px;
+	border-left: #8cacbb 2px solid;
+	border-right: #8cacbb 2px solid;
+	margin: 2px 0;
+	font-family: monospace;
+	font-style: italic;
+}
+div > blockquote {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 15px 0;
+}
+div > blockquote:hover {
+	box-shadow: 0 0 18px #f0f0f0 inset;
+}
+blockquote > blockquote {
+	border-left: #c674cf 2px solid;
+	border-right: #c674cf 2px solid;
+}
+blockquote > blockquote > blockquote {
+	border-left: #81cf84 2px solid;
+	border-right: #81cf84 2px solid;
+}
+blockquote > blockquote > blockquote > blockquote {
+	border-left: #ffae4f 2px solid;
+	border-right: #ffae4f 2px solid;
+}
+blockquote > blockquote > blockquote > blockquote > blockquote {
+	border-left: #efb877 2px solid;
+	border-right: #efb877 2px solid;
+}
+blockquote > h1 {
+	font-size: 14px;
+}
+blockquote > h2 {
+	font-size: 13px;
+}
+blockquote > h3 {
+	font-size: 12px;
+}
+blockquote > h4 {
+	font-size: 11px;
+}
+blockquote > h5 {
+	font-size: 10px;
+}
+blockquote > h6 {
+	font-size: 9px;
+}

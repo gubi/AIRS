@@ -1,0 +1,261 @@
+/**
+* Main System GUI installer stylesheet
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Ubuntu"), url("common/media/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
+}
+body {
+	font-family: Ubuntu,"Ubuntu Beta",UbuntuBeta,"Bitstream Vera Sans","DejaVu Sans",Tahoma,sans-serif;
+	padding: 0;
+	margin: 0;
+}
+h1 {
+	margin-top: 0;
+}
+textarea.text {
+	width: 96%;
+	height: 200px;
+	font-family: monospace;
+}
+textarea.html {
+	width: 94%;
+	height: 150px;
+}
+#header {
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	z-index: 3;
+}
+#header #airs_logo:before {
+	content: "";
+	background-image: -webkit-linear-gradient(bottom center, rgba(255,255,255,0), #fff 20%);
+	background-image: -moz-linear-gradient(bottom center, rgba(255,255,255,0), #fff 20%);
+	background-image: -ms-linear-gradient(bottom center, rgba(255,255,255,0), #fff 20%);
+	background-image: -o-linear-gradient(bottom center, rgba(255,255,255,0), #fff 20%);
+	background-image: linear-gradient(to top, rgba(255,255,255,0), #fff 30%);
+	position: fixed;
+	z-index: 0;
+	width: 100%;
+	height: 140px;
+	top: 0;
+	left: 0;
+}
+#header #airs_logo {
+	margin-left: 20px;
+	padding-bottom: 50px;
+	position: fixed;
+	z-index: 1;
+}
+#header #airs_logo #logotype {
+	padding-left: 5px;
+	margin-left: -5px;
+}
+#header h1 {
+	right: 0;
+	margin: 0 20px 0 0;
+	line-height: 92px;
+	font-weight: normal;
+	font-size: 2em;
+	color: #666;
+	position: fixed;
+	z-index: 2;
+}
+#container {
+	left: 0;
+	top: 0;
+}
+#forms > span {
+	padding: 50px 0;
+	display: block;
+}
+#container > h1.left:first-child {
+	background-color: #fff;
+	padding-top: 30px;
+	padding-bottom: 45px;
+	margin-bottom: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 3;
+}
+.left {
+	margin-left: 217px !important;
+	border-left: #ddd 3px solid;
+	padding-left: 15px;
+}
+span.arrows {
+	padding: 0;
+}
+span.arrow {
+	padding: 40px 10px;
+	display: block;
+	width: 32px;
+}
+span.arrow.top {
+	background: url("../media/img/arrow_hand_up_ccc.png") center center no-repeat;
+}
+span.arrow.down {
+	background: url("../media/img/arrow_hand_down_ccc.png") center center no-repeat;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.left {
+		margin-left: 210.5px !important;
+	}
+}
+p.left {
+	margin: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#right_guide {
+	position: fixed;
+	height: 100%;
+	width: auto;
+	border-left: #dedede 3px solid;
+	top: 0;
+	left: 55%;
+	padding: 20px;
+	z-index: 2;
+}
+#container fieldset {
+	border: 0px none;
+	padding: 0;
+	margin: 0;
+}
+#container fieldset.active {
+	display: block;
+}
+/*
+#container fieldset.active:after {
+	content: "-";
+	position: absolute;
+	margin-top: -35px;
+	background-image: -moz-linear-gradient(top center, rgba(255, 255, 255, 0), #fff 75%);
+	width: 100%;
+	height: 50px;
+	z-index: 2;
+}
+#container fieldset.inactive {
+	display: none;
+}
+*/
+#container legend {
+	background-image: none;
+	border-radius: 0;
+	border-right: 0px none;
+	margin-left: 0;
+	padding: 0;
+	width: auto;
+}
+#container legend span {
+	/*padding-top: 1.5em;*/
+	font-size: 1.1em;
+	display: block;
+}
+#container legend span.left {
+	margin-left: 216px !important;
+	border-left-color: #cecece;
+	font-size: 2em;
+    font-weight: lighter;
+	color: #aaa;
+	padding-top: 162px;
+}
+#container fieldset:first-child legend span.left {
+	padding-top: 180px;
+}
+#container fieldset:last-child legend span.left {
+	padding-top: 70px;
+}
+#container legend span.left a {
+	color: #cecece !important;
+	font-weight: normal;
+}
+#container legend span.left a:hover {
+	color: #0088cc !important;
+	text-decoration: none !important;
+}
+#container legend span.left a:hover:before {
+    color: #cecece !important;
+    content: "▸ ";
+    font-size: 0.8em;
+    margin-left: -15.5px;
+    vertical-align: 0.25em;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#container legend span.left {
+		margin-left: 209.5px !important;
+	}
+}
+#container legend + table tr:first-child th, #container legend + table tr:first-child td {
+	padding-top: 20px !important;
+}
+#container label {
+	white-space: pre;
+}
+#container legend + table tr:last-child th, #container legend + table tr:last-child td { }
+#container table {
+	width: 100%;
+}
+#container table tr:hover th {
+	font-weight: bold;
+}
+#container table tr:hover td {
+	background-color: #f0f0f0;
+}
+#container table:hover tr td.row_help {
+	border-left: #dedede 3px solid;
+}
+#container table tr:hover td.row_help {
+	border-left: #cecece 3px solid;
+	background-color: transparent;
+	color: #999;
+}
+#container table tr:hover td.row_help a {
+	visibility: visible;
+}
+#container table tr:hover td.row_help a {
+	color: #333 !important;
+}
+#container fieldset:last-child table tr:hover th + td {
+	background-color: transparent;
+}
+#container fieldset:last-child table tr:hover td.row_help {
+	border-left: 0px none;
+}
+#container table th {
+	width: 197px !important;
+	padding: 10px;
+	font-weight: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#container table th {
+		width: 191px !important;
+	}
+}
+#container table td {
+	border-left: #cecece 3px solid;
+	padding: 10px 0 10px 15px !important;
+	width: 40%;
+}
+#container table td.row_help {
+	border-left: 0px none;
+	color: transparent;
+	font-style: italic;
+	width: auto;
+}
+#container table td.row_help a {
+	visibility: hidden;
+}

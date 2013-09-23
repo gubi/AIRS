@@ -1,0 +1,19 @@
+/**
+* Main System GUI stylesheet - font style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu"), url("../media/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
+}

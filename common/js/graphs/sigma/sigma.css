@@ -1,0 +1,54 @@
+.sigma-parent {
+	background-image: -moz-radial-gradient(center center, #000, #111);
+	background-image: -webkit-radial-gradient(center center, #000, #111);
+	background-image: -o-radial-gradient(center center, #000, #111);
+	background-image: -ms-radial-gradient(center center, #000, #111);
+    border-radius: 4px;
+    height: 600px;
+	width: 100%;
+    position: relative;
+}
+#mind_map.fullscreen, #mind_map.fullscreen canvas {
+	border-radius: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100% !important;
+	z-index: 99999;
+}
+#airs_logo.fullscreen {
+	position: fixed;
+	z-index: 999999;
+	padding: 15px;
+	left: 0px !important;
+}
+#mind_map-parent {
+	background: #111 url("../../../media/img/indicator_medium_black.gif") center center no-repeat;
+	border-bottom-left-radius: 4px;
+	border-radius: 4px;
+	height: 600px;
+	position: relative;
+	width: 100%;
+}
+#mind_map-footnotes {
+	position: fixed;
+	color: #fff;
+	bottom: 10px;
+	left: 10px;
+	z-index: 999999999;
+}
+#mind_map_search {
+	position: fixed;
+	top: 25px;
+	right: 0;
+	padding: 10px 12.5px 15px 15px;
+	display: none;
+	z-index: 999999;
+}
+#mind_map_search input {
+	background-color: transparent !important;
+	color: rgba(255, 255, 255, 0.75) !important;
+	border: rgba(204, 204, 204, 0.2) 1px solid;
+	padding: 5px;
+}

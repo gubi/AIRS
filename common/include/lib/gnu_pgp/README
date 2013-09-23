@@ -1,0 +1,229 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+gnupgp.class.php - v0.2
+
+Author: Rodrigo Z. Armond
+Email: rodzadra@yahoo.com
+
+=============================================
+
+Este software pode ser usado SEM NENHUMA GARANTIA POR PARTE DO AUTOR. (LEIA LICENCA.txt ANTES DE USÁ-LO)
+
+
+This can be used WITHOUT ANY WARRANTY BY THE AUTHOR. (SEE LICENCA.txt BEFORE YOU USE THIS SOFTWARE)
+
+
+
+COMEÇO:
+=======
+
+Para começar, descomprima este arquivo em um diretório acessível pelo servidor html.
+Edite o arquivo gnupgp.class.php e mude as variáveis GPG_BIN, GPG_USER_DIR de acordo com o seu sistema.
+
+depois, abra seu navegador em http://seu_servidor/<diretório_de_instalação>/index.html
+
+Para fazer um teste local, vc precisa gerar no mínimo 2 chaves.
+
+Clique em Gen Key no menu, preencha o formulário e mande gerar a chave. (aguarde a geração da chave).
+
+A geração da chave demora um pouco (principalmente se ela estiver em um servidor remoto), não se preocupe. 
+aguarde a completa geração. Após confirmado q a chave foi gerada sem problemas, cadastre (gere) novamente uma outra chave diferente.
+
+Se tudo ocorrer bem, tudo está ok! :-)
+
+Se quiser ver quais chaves estão no seu "chaveiro eletrônico" (keyring), clique em List Key (no menu) e entre o email.
+Deverá aparece um tabela com as chaves cadastradas em seu "chaveiro eletrônico".
+
+etc, etc, etc...
+
+
+To start, decompress this file in a dir where the http server was access.
+Edit the gnupgp.class.php and change the GPG_BIN, GPG_USER_DIR to reflect your system.
+
+after, open your browser in http://your_host/<the_install_dir>/index.html
+
+To make an local test, you need to generate a minimum of 2 keys.
+
+Click in Gen Key, at menu, fill the form and click in the gen_key button. (wait to gen the key).
+
+The key geration is a slow process (principaly if this is on a remot server), dont worry.
+wait the complet key geration. After, the confirmation, make this process again with one other key different.
+
+If all its ok, its all ok! :-)
+
+If you need to see what keys are in your keyring, click in the List Key (in the menu) and anter the email.
+This will show an table with the all keys in the keyring.
+
+etc, etc, etc...
+
+
+
+
+métodos da classe gnupgp:
+=========================
+
+function check_private_dir()
+	Esta função checa se o diretório privado .gnupg do usuário existe.
+	
+	This function check if the private .gnupg dir exist
+
+
+function check_pubring()
+	Esta função checa se o arquivo pubring.gpg existe no diretório privado (.gnupg) do usuário.
+	
+	This function check if the pubring.gpg file exist in the private .gnupg dir
+	
+function check_all()
+	Esta função faz o uso das 2 funções acima (check_private_dir and check_pubring)
+	
+	This function make the use of the 2 function above (check_private_dir and check_pubring)
+
+function mount_recipients($recipients)
+	Esta função checa se a chave pública de quem irá a mensagem (recipient) está no seu "chaveiro eletrônico",
+	- variável $recipients pode ser um único email ou vários separados por ";" (ponto-e-vírgula) - e retorna os
+	recipientes válidos nas variáveis $this->valid_keys e as não válidas em $this->not_valid_keys. 
+	(recipientes válidos são aqueles q vc possue a chave pública).
+
+	This function check if the recipients are in the keyring ($recipients can be one email or more separeted by ';')
+	and returns the valids recipients in the $this->valid_keys var and the not valids recipients in the $this->not_valid_keys var.
+	(valid recipients are that on the keyring of the user).
+
+function check_keyID($keyID)
+	Esta função checa se a chave (conteúdo da variável $keyID) está em seu chaveiro eletrônico e retorna verdadeiro (true) se estiver.
+	Se a chave ($keyID) não estiver retorna falso (false).
+	A variável $keyID, pode ser uma simples chave (nome, email, ou qualquer outro identificador válido) ou várias chaves separadas
+	por ponto-e-vírgula (";").
+
+	This function check if the $keyID is on the keyring of the user. And return true if yes.
+	If isn't on the keyring return false.
+	$keyID can be a simple key or various separeded with ";".
+
+function list_keys()
+	Esta função preenche a variável $this->keyArray (do tipo array) com todas as chaves publicas de seu chaveiro eletrônico.
+	Retorna verdadeiro (true) se tudo ocorrer bem, ou falso (false) se der algum problema.
+
+	This function populate an array ($this->keyArray) with all pub keys of the user keyring.
+	Return true if all runs good or false for an error.
+	
+
+function encrypt_message()
+	Esta função encripta a mensagem e retorna verdadeiro (true) se tudo ocorrer bem.
+	A mensagem encriptada pode ser acessada pela variável $this->encrypted_message.
+
+	This function encrypts the message and return true if all its ok.
+	The encrypted message will be in the $this->encrypted_message var.
+
+function decrypt_message()
+	Esta função decripta a mensagem e retorna verdadeiro (true) se tudo ocorrer bem.
+	A mensagem decriptada pode ser acessada pela variável $this->decrypted_message.
+
+	This function decrypts the message and return true if all its ok.
+	The decrypted message will be in the $this->decrypted_message var.
+
+function import_key($key)
+	Esta função importa uma chave pública para o seu chaveiro eletrônico.
+	A variável $key tem q ser do tipo ASC.
+	Se tudo ocorrer bem, retorna verdadeiro (true) ou falso (false) se o contrário.
+	
+	This function import a public key to the users keyring.
+	If all its ok this return true.
+
+function export_key()
+	Esta função exporta a chave pública do usuário.
+	Se tudo ocorrer bem retorna verdadeiro (true) ou falso (false) se o contrário.
+	A chave pública exportada pode ser acessada pela variável $this->public_key.
+
+	This function export the user public key.
+	If all its ok this return true.
+	The exported public key will be in the $this->public_key var.
+
+function remove_key($key)
+	Esta função remove um única chave do seu chaveiro eletrônico.
+	Retorna verdadeiro ou falso.
+
+	This function removes one key from the user keyrings.
+	return true if all its ok.
+
+function gen_key($userName, $comment="", $userEmail, $passphrase)
+	Esta função gera uma nova chave (para um novo usuário).
+	$userName - é o nome do usuário.
+	$comment - é um comentário q é adicionado na chave (não é obrigatório).
+	$userEmail - é o email do usuário.
+	$passphrase - é a senha q protegerá toda a encriptação.
+	se tudo estiver ok, retorna verdadeiro.
+
+	This function gen a new user key.
+	$userName - is the user name.
+	$comment - this is an comment that is appended after the user name (this can be empty)
+	$userEmail - this is the user email
+	$passphrase - this is the password used to encrypt all the user message
+	if all its ok, this return true.
+
+RmdirR($userPath)
+	Esta função remove o diretório privado do usuário (uso interno).
+
+	This is an function to remove an user private path (internal)
+
+Todas as funções retornam verdadeiro (true) se ocorrer tudo bem, caso contrário, se alguma coisa falhar, retorna falso (false).
+Se alguma função retornar falso, o erro pode ser lido na variável $This->error.
+
+
+All the functions return true when all its ok, or false when somethinks not go on.
+If the function return false use the $this->error to see why.
+
+
+
+Eu não sei o q é pior, se meu inglês ou meu português, mas de qualquer forma qualquer correção é bem vinda! 8-)
+
+I don't know what is more bad, if my english or my portuguese but, any way, any correction is wellcome! 8-)
+
+
+ESTE SOFTWARE PODE SER EXPORTADO PARA O IRAQUE, CUBA, CHINA E QUALQUER OUTRO PAÍS O QUAL OS EUA USUALMENTE INTERDITA.
+              ^^^^^^^^
+
+THIS SOFTWARE CAN BE EXPORTED TO IRAK, CUBA, CHINA AND ANY COUNTRY THAT THE EUA USUALLY INTERDIT.
+              ^^^^^^
+
+BUG(s):
+=======
+
+FUSQUINHA AMARELO PINTADO DE VERDE, COM UM CARANGUEIJO DENTRO DA ALAVANCA DE MARCHA E UMA IMAGEM DE NOSSA SENHORA NO PAINEL.  ;-)
+
+
+Histórico:
+==========
+
+GNUpgp PHP Class - by Rodrigo Z. Armond <rodzadra@passagemdemariana.com.br>
+
+ver 0.2 -	A segunda versão.
+		Básicamente, esta versão remove as mensagens dos logs HTTPD (logs de erro e de acesso).
+		Nesta versão forão adicionados 2 novas opções de configurações FAIL_NO_RECIPIENT e GEN_HTTP_LOG, veja o arquivo gnupgp.class.php.
+		Adicionado method="post" nos arquivos de exemplo para evitar mensagens no log do servidor Http.
+		Algumas modificações menores no código.
+		A criação deste histórico. (acho q ninguém lê isso! mas "voilá".)
+		
+
+		The second version
+		This version, basicaly, remove messages from the HTTPD log file (error and access).
+		This version was added 2 more config options, FAIL_NO_RECIPIENT and GEN_HTTP_LOG, see the gnupgp.class.php file. 
+		Was added the method="post" in the examples file to evite the httpd logs.
+		Some minor modifications on the code.
+		The creation of this historic. (some one read this??).
+
+ver 0.1a - 	A primeira versão.
+		Esta versão pode Gerar, Listar, Importar, Exportar, Remover chaves públicas, encriptar e decriptar mensagens.
+		
+		The first version.
+		This version can Gen, List, Import, Export, Remove public keys, encrypt and decrypt messages.
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD4DBQE78Yw3K2GYoRRzSjYRAoceAJdg4JyKrCg7OpCLso/zjvTFM2tuAKCgiAPh
+bsgJhD/HXYTu96vIdTHWAQ==
+=cDn5
+-----END PGP SIGNATURE-----
+
+

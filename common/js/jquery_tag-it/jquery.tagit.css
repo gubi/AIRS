@@ -1,0 +1,70 @@
+ul.tagit {
+	padding: 3px;
+	overflow: auto;
+	margin-top: 0;
+    margin-left: inherit; /* usually we don't want the regular ul margins. */
+	margin-bottom: 0;
+    margin-right: inherit;
+	border-radius: 0;
+}
+ul.tagit:hover {
+	border: #999 1px solid;
+	box-shadow: 0 0 3px #f0f0f0;
+}
+ul.tagit:active, ul.tagit:focus {
+	border: #999 1px solid;
+	box-shadow: 0 0 9px #ccc;
+}
+ul.tagit li {
+	display: block;
+	float: left;
+	margin: 0;
+}
+ul.tagit li.tagit-choice {
+	padding: .2em 18px .2em .5em;
+    position: relative;
+    line-height: inherit;
+	margin: 2px 5px 2px 0;
+}
+ul.tagit li.tagit-new {
+	padding: 3px;
+	margin-top: 1px;
+}
+
+ul.tagit li.tagit-choice a.tagit-label {
+	cursor: pointer;
+	text-decoration: none;
+}
+ul.tagit li.tagit-choice .tagit-close {
+	cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -8px;
+}
+
+/* used for some custom themes that don't need image icons */
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: none;
+}
+
+ul.tagit li.tagit-choice input {
+	display: block;
+	float: left;
+	margin: 2px 5px 2px 0;
+}
+ul.tagit input[type="text"] {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+
+    border: none;
+	margin: 0;
+	padding: 0;
+	width: inherit;
+	background-color: inherit;
+    outline: none;
+}
+ul.tagit input[type="text"]:focus, ul.tagit input[type="text"]:hover {
+	box-shadow: none;
+}

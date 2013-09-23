@@ -1,0 +1,198 @@
+/**
+* Main System GUI stylesheet - links style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+a {
+	color: #333 !important;
+	font-weight: bold;
+	text-decoration: none;
+	font-size-adjust: 0.5;
+}
+a.no_exists {
+	background: url(../media/img/no_exists.gif) top right no-repeat;
+	padding-right: 12px;
+	color: #999 !important;
+}
+a:hover, a:focus {
+	text-decoration: underline;
+}
+a[target^="_blank"] {
+	background-attachment: scroll;
+	background: url(../media/img/extlink.gif) right top no-repeat;
+	/*display: -moz-inline-stack;*/
+	padding-right: 9px;
+}
+a.no_ext {
+	background-image: none !important;
+}
+a.tag[target^="_blank"] {
+	display: inline;
+}
+a[href="javascript: void(0);"] {
+	color: #666;
+}
+a[href="javascript: void(0);"]:hover {
+	text-decoration: none !important;
+}
+a.btn {
+	color: #666 !important;
+	text-decoration: none !important;
+}
+a.btn:focus {
+	padding: 5px 10px !important;
+}
+a.zoombox {
+	text-decoration: none !important;
+}
+a.zoombox img {
+	max-height: 300px;
+}
+a.zoombox span {
+	display: block;
+	margin-top: 10px;
+}
+a.quote {
+	background: url(../media/img/comment_16.png) center center no-repeat;
+}
+a.quote:hover {
+	background: url(../media/img/comment_down_16.png) center center no-repeat;
+}
+a.quote:hover:before {
+	content: "" !important;
+}
+a.quote:active, a.quote:focus {
+	padding: 0 8px !important;
+}
+a.tag, span.tag {
+	padding: 4px 7px;
+	background-color: #e6e6e6;
+	color: #555 !important;
+	border: #d3d3d3 1px solid;
+	border-radius: 1px;
+	font-weight: normal;
+	font-size: 1.05em;
+	margin: 0 0.1em;
+	line-height: 2.2em;
+	white-space: nowrap
+}
+a.tag:hover, span.tag:hover {
+	background-color: #e0e0e0;
+	padding: 4px 7px;
+}
+a.tag:link, a.tag:active, span.tag:link, span.tag:active {
+	padding: 4px 7px !important;
+}
+a.rdf {
+	background: url(../media/img/rdf_document_16_666.png) left center no-repeat;
+	padding: 2px 2px 2px 22px;
+}
+a.rss {
+	background: url(../media/img/feed_16_666.png) left center no-repeat;
+	padding: 2px 2px 2px 22px;
+}
+a.download {
+	background: url(../media/img/download_16_666.png) left center no-repeat;
+	padding: 2px 2px 2px 22px;
+}
+a.xml {
+	background: url(../media/img/xml_document_32_666.png) left center no-repeat;
+	padding: 8px 8px 8px 38px;
+}
+a.xml_error {
+	background: url(../media/img/xml_document_cancel_32_cd0a0a.png) left center no-repeat;
+	padding: 8px 8px 8px 38px;
+	display: block;
+}
+a.edit {
+	background: url(../media/img/edit_16_333.png) center center no-repeat;
+	padding: 8px;
+	display: inline-block;
+}
+a.edit:focus {
+	padding: 8px !important;
+}
+a.cancel {
+	background: url(../media/img/cancel_16_333.png) center center no-repeat;
+	padding: 8px;
+	display: inline-block;
+}
+a.cancel:focus {
+	padding: 8px !important;
+}
+a.start {
+	background: url(../media/img/controls_fast_forward_16_333.png) center center no-repeat;
+	padding: 8px;
+	display: inline-block;
+}
+a.start:focus {
+	padding: 8px !important;
+}
+a.feed {
+	background: url(../media/img/feed_16_333.png) center center no-repeat;
+	padding: 8px;
+	display: block;
+}
+a.view {
+	background: url(../media/img/viewer_text_16_333.png) center center no-repeat;
+	padding: 8px;
+	display: block;
+}
+a#captcha {
+	background: #fff url(../media/img/indicator_medium.gif) center center no-repeat;
+	border: #ccc 1px solid;
+	display: inline-block;
+	height: 72px;
+	width: 120px;
+}
+a#captcha:focus, a#captcha:active {
+	padding: 0;
+	margin: 0;
+	outline: none !important;
+}
+a#captcha + input {
+	margin-left: 10px;
+}
+a.prev {
+	background: url(../media/img/arrow_full_left_32.png) 16px no-repeat;
+}
+a.prev:hover:after {
+	content: attr(oldtitle);
+	padding-left: 28px;
+}
+a.next {
+	background: url(../media/img/arrow_full_right_32.png) 16px no-repeat;
+	float: right;
+}
+a.next:hover {
+	background-position: 128px center;
+	margin-top: -8px;
+}
+a.next:hover:before {
+	content: attr(oldtitle);
+	padding-right: 26px;
+}
+
+a#active_infovis {
+	position: relative;
+	padding: 0 10px;
+	z-index: 3;
+}
+a#active_infovis.close_btn {
+	background: url("../media/img/close.png") center center no-repeat;
+	color: transparent !important;
+	float: right;
+	top: -4px;
+	right: 0;
+	padding: 10px;
+	text-decoration: none;
+}

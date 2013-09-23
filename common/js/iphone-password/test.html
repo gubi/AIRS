@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.js"></script>          
+ <script type="text/javascript" src="jquery.iphone.password.js"></script>
+ <script type="text/javascript" src="caret.js"></script>
+</head><body>
+<script type="text/javascript">
+function chg(v) {
+var me = $(this);
+var n = me.next();
+if (n[0].nodeName.toLowerCase() == "br") {
+    n.before($("<b>"+me.attr("real")+"</b>"))
+} else {
+    n.text(me.attr("real"))
+}
+}
+$(document).ready(function(){
+    var a = $("#a").iphonePassword({mask: '*', duration: 2000})[0].text.change(chg);
+    $("#b").iphonePassword();
+    $("#c").iphonePassword()[0].unMask();
+    //$("input:password").iphonePassword().each(function() {this.unMask(); });
+});
+</script>
+<form method=get>
+Check the URL after submit:<br>
+<input id='a' type="password" name=a value="aga"> id=a configured, listening <br>
+<input id='b' type="password" name=b value="bgb"> id=b default<br>
+<input id='c' type="password" name=c value="cgc"> id=c unmasked<br>
+<input type=submit>
+</form>
+</body>
+</html>

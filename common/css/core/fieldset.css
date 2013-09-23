@@ -1,0 +1,130 @@
+/**
+* Main System GUI stylesheet - fieldset style
+* 
+* CSS versions 3
+*
+* @category	Stylesheet
+* @package	AIRS
+* @author	Alessandro Gubitosi <gubi.ale@gotanotherway.com>
+* @link			http://airs.inran.it/index.php
+*
+* @SLM_is_core	true
+* @SLM_status	ok
+*/
+
+fieldset {
+border: #ccc 1px solid;
+border-radius: 3px;
+padding: 10px 5px 5px 10px;
+text-indent: 6px;
+}
+fieldset.legend {
+	background-image: -moz-radial-gradient(center center , farthest-corner, #fff 50%, #efefef);
+	background-image: -webkit-radial-gradient(center center , farthest-corner, #fff 50%, #efefef);
+	background-image: -ms-radial-gradient(center center , farthest-corner, #fff 50%, #efefef);
+	background-image: -o-radial-gradient(center center , farthest-corner, #fff 50%, #efefef);
+	width: 25%;
+	right: 25px;
+	margin-top: -108px;
+	border-radius: 4.5px;
+	position: absolute;
+	z-index: 100;
+	padding-top: 15px;
+	box-shadow: 0 6px 6px #ccc;
+}
+fieldset.legend.collapsed {
+	box-shadow: none;
+}
+fieldset.legend.collapsed:hover, #legend_content:hover {
+	cursor: help;
+}
+fieldset.legend legend {
+	background-color: rgba(255, 255, 255, 0.25);
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+	position: absolute;
+	margin-top: -30px;
+}
+fieldset.legend legend:hover {
+	cursor: pointer;
+}
+legend {
+	background-image: -moz-linear-gradient(center top , #fafafa, #fff 27%);
+	background-image: -webkit-linear-gradient(center top , #fafafa, #fff 27%);
+	background-image: -ms-linear-gradient(center top , #fafafa, #fff 27%);
+	background-image: -o-rlinear-gradient(center top , #fafafa, #fff 27%);
+	font-weight: bold;
+	padding: 6px 9px;
+	border-left: #bbb 1px solid;
+	border-right: #bbb 1px solid;
+	border-radius: 6px;
+	text-indent: 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #666;
+}
+legend[class], fieldset[class] legend {
+	padding-left: 27px;
+}
+legend.author, fieldset.author legend {
+	background: url(../media/img/user_close_16_666.png) 6px 5px no-repeat;
+}
+legend.origin, fieldset.origin legend {
+	background: url(../media/img/filepath_16_666.png) 6px 5px no-repeat;
+}
+legend.license, fieldset.license legend {
+	background: url(../media/img/remix_16_666.png) 6px 5px no-repeat;
+}
+legend.edit, fieldset.edit legend {
+	background: url(../media/img/edit_16_666.png) 6px 5px no-repeat;
+}
+legend.info, fieldset.info legend {
+	background: url(../media/img/information_16_666.png) 6px 5px no-repeat;
+}
+legend.label, fieldset.label legend {
+	background: url(../media/img/label_16_666.png) 6px 5px no-repeat;
+}
+legend.search, fieldset.search legend {
+	background: url(../media/img/search_16_666.png) 6px 5px no-repeat;
+}
+legend.metadata, fieldset.metadata legend {
+	background: url(../media/img/network_protocol_16_666.png) 6px 5px no-repeat;
+}
+legend.mail, fieldset.mail legend {
+	background: url(../media/img/mail_16_666.png) 6px 5px no-repeat;
+}
+legend.feed, fieldset.feed legend {
+	background: url(../media/img/feed_16_666.png) 6px 5px no-repeat;
+}
+legend.rdf, fieldset.rdf legend {
+	background: url(../media/img/rdf_document_16_666.png) 6px 5px no-repeat;
+}
+legend.groups, fieldset.groups legend {
+	background: url(../media/img/combine_16_666.png) 6px 5px no-repeat;
+}
+legend.author:hover, 
+fieldset.author legend:hover
+legend.origin:hover, 
+fieldset.origin legend:hover
+legend.license:hover, 
+fieldset.license legend:hover
+legend.edit:hover, 
+fieldset.edit legend:hover
+legend.label:hover 
+fieldset.label legend:hover {
+	cursor: pointer;
+}
+legend.clock, fieldset.clock legend {
+	background: url(../media/img/clock_16_666.png) 6px 5px no-repeat;
+}
+legend.system, fieldset.system legend {
+	background: url(../media/img/server_16_666.png) 6px 5px no-repeat;
+}
+legend.source, legend.query, fieldset.source legend, fieldset.query legend {
+	background: url(../media/img/source_code_16_666.png) 6px 5px no-repeat;
+}
+legend.form, fieldset.form legend {
+	background: url(../media/img/text_16_666.png) 6px 5px no-repeat;
+}
+legend.key, fieldset.key legend {
+	background: url(../media/img/security_closed_16_666.png) 6px 5px no-repeat;
+}
