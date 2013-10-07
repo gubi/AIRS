@@ -259,3 +259,7 @@ p.left {
 #container table td.row_help a {
 	visibility: hidden;
 }
+span.error span {
+	display: block;
+	margin-top: 5px;
+}
