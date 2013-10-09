@@ -1,6 +1,6 @@
 # If you want login prompt generate an ".htpasswd" file and uncomment following lines
 #AuthType Basic
-#AuthName "To access this area, you must login"
+#AuthName "This area requires login"
 #AuthUserFile /var/www-dev/.htpasswd
 #require valid-user
 
@@ -45,7 +45,7 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
 	RewriteCond %{THE_REQUEST} ^(.*)/index.php
 	RewriteRule ^(.*)index.php$ https://%{SERVER_NAME}/$1 [R=303,L]
 	RewriteRule ^(.*)index.htm$ https://%{SERVER_NAME}/$1 [R=303,L]
-	#RewriteRule ^(.*)index.html$ https://%{SERVER_NAME}/$1 [R=303,L]
+	RewriteRule ^(.*)index.html$ https://%{SERVER_NAME}/$1 [R=303,L]
 	RewriteRule ^(.*)index.asp$ https://%{SERVER_NAME}/$1 [R=303,L]
 	
 	
