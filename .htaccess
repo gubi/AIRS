@@ -1,4 +1,4 @@
-# If you want login prompt generate an ".htpasswd" file and uncomment followinf lines
+# If you want login prompt generate an ".htpasswd" file and uncomment following lines
 #AuthType Basic
 #AuthName "To access this area, you must login"
 #AuthUserFile /var/www-dev/.htpasswd
