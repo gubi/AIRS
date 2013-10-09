@@ -1,0 +1,90 @@
+# If you want login prompt generate an ".htpasswd" file and uncomment followinf lines
+#AuthType Basic
+#AuthName "To access this area, you must login"
+#AuthUserFile /var/www-dev/.htpasswd
+#require valid-user
+
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} !^/.*.rdf$
+RewriteCond %{REQUEST_URI} !^/(common/css|common/css/.*?)($|/)
+RewriteCond %{REQUEST_URI} !^/(common/js|common/js/.*?)($|/)
+RewriteCond %{REQUEST_URI} !^/(common/media/img|common/media/img/.*?)($|/)
+RewriteCond %{REQUEST_URI} !^/(common/include/funcs/_ajax|common/include/funcs/_ajax/.*?)($|/)
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
+
+# ----------- REMOVE UNWANTED ELEMENTS FROM ADDRESS -----------
+#
+	# Add final slashes "/" in case of user dir
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_URI} ^/Utente($|/)
+	RewriteRule ^(.+[^/])$ https://%{SERVER_NAME}/$1/ [R=303,L]
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_URI} ^/(Utente|Utente/.*?)($|/)
+		RewriteCond %{REQUEST_URI} ^/(User|User/.*?)($|/)
+		RewriteRule ^(.+[^/])/(.+[^/])$ https://%{SERVER_NAME}/$1/$2/ [R=303,L]
+	
+	# Remove spaces " "
+	RewriteCond %{REQUEST_URI} !^/(share_data|share_data/.*?)($|/)
+	RewriteRule (.*)\ (.*) https://%{SERVER_NAME}/$1_$2 [R=303,L]
+	
+	# Remove all plus "+" symbols
+	RewriteRule (.*)\+(.*) https://%{SERVER_NAME}/$1_$2 [R=303,L]
+	
+	# Remove all quotes " \" "
+	RewriteRule (.*)\"(.*) https://%{SERVER_NAME}/$1'$2 [R=303,L]
+	
+	# Remove all double-slashes "//"
+	RewriteCond %{REQUEST_URI} ^(.*)//(.*)$
+	RewriteRule . https://%{SERVER_NAME}/%1/%2 [R=303,L]
+	
+	# Remove all "index.*" indications
+	RewriteCond %{THE_REQUEST} ^(.*)/index.php
+	RewriteRule ^(.*)index.php$ https://%{SERVER_NAME}/$1 [R=303,L]
+	RewriteRule ^(.*)index.htm$ https://%{SERVER_NAME}/$1 [R=303,L]
+	#RewriteRule ^(.*)index.html$ https://%{SERVER_NAME}/$1 [R=303,L]
+	RewriteRule ^(.*)index.asp$ https://%{SERVER_NAME}/$1 [R=303,L]
+	
+	
+# ----------- URI CONVERSION -----------
+#
+	# Convert GET keys "(?|&)x=" in "/"
+	RewriteRule ^([^/\.]+)/?$ /index.php?m=$1 [QSA]
+	RewriteRule ^([^/\.]+)/([^/]+)/?$ /index.php?m=$1&id=$2 [QSA]
+	RewriteRule ^([^/\.]+)/([^/]+)/([^/\.]+)/?$ /index.php?m=$1&id=$2&q=$3 [QSA]
+
+
+#RewriteCond %{HTTP_USER_AGENT} ^.*Links.*$
+#ReWriteRule ^.*$ _invalid_browser.txt [L]
+
+# ----------- ERROR PAGES -----------
+#
+ErrorDocument 401 /common/include/error_pages/index.php?error=401
+ErrorDocument 404 /common/include/error_pages/index.php?error=404
+ErrorDocument 405 /common/include/error_pages/index.php?error=405
+
+# ----------- SECURITY -----------
+#
+	# proc/self/environ? no!
+	RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+	 
+	# Block any script that trying to set mosConfig value via URL
+	RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+	 
+	# Block any script base64_encode crap
+	RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
+	 
+	# Blocca ogni script che contiene un tag <script> nell'URL
+	RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+	 
+	# Block any script that trying to set a PHP global variable via URL
+	RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
+	 
+	# Block any script that trying to edit a _REQUEST variable via URL
+	RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
+	 
+	# Send all blocked requests to 403 error page
+	RewriteRule ^(.*)$ index.php [F,L]
