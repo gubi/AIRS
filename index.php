@@ -49,7 +49,6 @@ $load_time = microtime(true);
 require_once("common/include/conf/Wiki/all_pages/globals_definitions.php");
 require_once("common/include/.mysql_connect.inc.php");
 require_once("common/include/classes/class.load_i18n.php");
-
 require_once("common/include/funcs/get_link.php");
 require_once("common/include/funcs/translate.php");
 require_once("common/include/funcs/_converti_data.php");
@@ -174,7 +173,8 @@ if (trim($GLOBALS["user_level"]) == ""){
 $link = $http . $page_uri;
 $referringPage = parse_url($link);
 $parsed_query = $referringPage["path"];
-//parse_str($parsed_query, $queryVars); // Solo in caso di .htaccess non funzionante
+// Only in case of not working .htaccess
+//parse_str($parsed_query, $queryVars);
 $queryVars = explode("/", $parsed_query);
 	if (in_array($_SERVER["HTTP_HOST"], $queryVars)){
 		unset($queryVars[array_search($_SERVER["HTTP_HOST"], $queryVars)]);
@@ -183,8 +183,6 @@ $queryVars = explode("/", $parsed_query);
 	if (trim($queryVars[0]) == ""){
 		array_shift($queryVars);
 	}
-//print_r($queryVars);
-//print trim($queryVars[count($queryVars)-1]);
 $q_counter = 0;
 foreach ($queryVars as $k => $v){
 	if(strlen(trim($v)) > 0){
@@ -223,15 +221,6 @@ foreach ($queryVars as $k => $v){
 	}
 }
 require_once("common/include/funcs/redirects.php");
-/*
-if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COOKIE["iac"])){
-	header("Pragma: no-cache");
-	header("Cache-Control: no-cache, must-revalidate");
-	header("Refresh: 1;URL=" . $GLOBALS["page_uri"]);
-	print "Redirezionamento in corso.<br />Attendere...";
-	exit();
-}
-*/
 ?>
 <!DOCTYPE html>
 <html version="HTML+RDFa 1.1" lang="<?php print $config["language"]["default_language"]; ?>"
@@ -253,12 +242,11 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 	<base href="<?php print $absolute_path; ?>" />
 	<meta name="Author" content="Alessandro Gubitosi" />
 	<meta name="Description" content="<?php print $config["company"]["name"]; ?> - AIRS (Automatic Intelligent Research System)" />
-	<!--<meta name="Copyright" content="&copy; <?php print date("Y"); ?> INRAN" />-->
+	
 	<meta http-equiv="Expires" content="0">
 	<meta name="Robots" content="#" />
 	<meta name="Generator" content="#" />
 	<meta name="Keywords" content="#" />
-	<!--<meta http-equiv="expires" content="0" />-->
 	
 	<link rel="shortcut icon" href="<?php print $absolute_path; ?>common/media/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="<?php print $absolute_path; ?>common/media/favicon.png" type="image/png" />
@@ -267,9 +255,6 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 	<link rel="stylesheet" href="<?php print $absolute_path; ?>common/css/print.css" type="text/css" media="print" />
 	
 	<link rel="search" type="application/opensearchdescription+xml" title="<?php print $config["company"]["name"]; ?> - AIRS" href="<?php print $absolute_path; ?>common/media/osd.xml" />
-	<!--[if IE]>
-	<link rel="stylesheet" href="/css/main_win.css" type="text/css" media="screen, projection" />
-	<![endif]-->
 	
 	<!-- jquery-->
 	<script type="text/javascript" src="<?php print $absolute_path; ?>common/js/jquery-1.7.2.min.js"></script>
@@ -308,14 +293,11 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 		<link href="<?php print $absolute_path; ?>common/js/Gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css">
 		<script src="<?php print $absolute_path; ?>common/js/Gritter/js/jquery.gritter.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	/*
-	/*
-	# Sostituzione degli alerts con Apprise
+	/* Alerts replacing with Apprise windows */
 	window.__oldAlert__ = window.alert;
 	window.alert = function () {
 		apprise.apply(this, arguments);
 	};
-	*/
 	$.extend({
 		request_passphrase: function(v, error, callback) {
 			if (v == undefined){
@@ -477,18 +459,12 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 		$("#content_wrapper_main_content").slideUp(1200, function(){
 			$(this).prepend(title);
 		});
-		/*$("#content_wrapper_dynamic_content").html(dynamic).slideDown(1200);*/
 	}
 	$(function(){
 		$.getScript("common/js/html5test.js", function(){
 			var obj = jQuery.parseJSON(html5test());
 			if(obj.supportInputAutofocus){
-				/*
-				if (window.location != "https://85.18.206.117/Modifica:401"){
-					location.href ="401";
-				}
-				alert(window.location);
-				*/
+				
 			}
 		});
 		<?php if (isset($_COOKIE["iac"]) && trim($_COOKIE["iac"]) !== ""){ ?>
@@ -496,10 +472,9 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 		<?php } ?>
 		$(".key").iphonePassword({mask: 'â€¢', duration: 1000});
 		$("#key").iphonePassword({mask: 'â€¢', duration: 1000});
-		/* Da fixare
-		dynamic_content("ok")*/
 	});
 	$(document).ready(function() {
+		/* Need fix */
 		show_cloud("toc");
 		show_cloud("tocs", "toc");
 		$(window).scroll(function(e){
@@ -536,7 +511,7 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 			}
 			$("ul#panel_btn.vertical").css({top: yscroll + "px"});
 		});
-		/* qTip integration */
+		
 		$("a[title], div[title], span[title], td[title], acronym[title], img[alt]").qtip({
 			style: {
 				classes: "ui-tooltip-dark"
@@ -587,7 +562,7 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 			}
 		});
 	});
-	/* Listener pressione dei tasti */
+	
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) { loader("", "hide"); } /* ESC */
 	});
@@ -639,7 +614,7 @@ if (isset($_POST["username"]) && trim($_POST["username"]) !== "" && !isset($_COO
 				<div id="content_body">
 					<?php
 					require_once("common/include/get_content.php");
-					// Rinnova la variabile $pdo (sovrariscritta in alcuni script)
+					
 					$pdo = db_connect("");
 					?>
 				</div>
@@ -670,7 +645,7 @@ function compress_html($compress){
 	$ii = array('>', '', '', ' ');
 	$caratteri_a = array("Ã ", "Ã¨", "Ã©", "Ã¬", "Ã²", "Ã¹", "Ã€", "Ãˆ", "Ã‰", "ÃŒ", "Ã’", "Ã™");
 	//$caratteri_b = array("a`", "e`", "e`", "i`", "o`", "u`", "A`", "E`", "I`", "O`", "U`");
-	$caratteri_c = array("à", "è", "é", "ì", "ò", "ù", "À", "È", "É", "Ì", "Ò", "Ù");
+	$caratteri_c = array("ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½", "ï¿½");
 	$charset = array("&agrave;", "&egrave;", "&eacute;", "&igrave;", "&ograve;", "&ugrave;", "&Agrave;", "&Egrave;", "&Eacute;", "&Igrave;", "&Ograve;", "&Ugrave;");
 	return str_replace($caratteri_a, $charset, str_replace($caratteri_b, $charset, str_replace($caratteri_c, $charset, preg_replace($i, $ii, $compress))));
 }
