@@ -8,6 +8,6 @@
 		</style>
 	</head>
 	<body>
-		<object width="100" height="100" type="text/html" data="http://" . $_SERVER["HTTP_HOST"] . "/common/include/error_pages/error.php?error=<?php print $_GET["error"]; ?>"></object>
+		<object width="100" height="100" type="text/html" data="http://<?php print $_SERVER["HTTP_HOST"]; ?>/common/include/error_pages/error.php?error=<?php print $_GET["error"]; ?>"></object>
 	</body>
 </html>

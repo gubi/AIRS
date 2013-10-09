@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="http://" . $_SERVER["HTTP_HOST"] . "/common/include/error_pages/polymaps.min.js"></script>
+		<script type="text/javascript" src="http://<?php print $_SERVER["HTTP_HOST"]; ?>/common/include/error_pages/polymaps.min.js"></script>
 		<style type="text/css">
 		html, body {
 			height: 100%;
@@ -63,7 +63,7 @@
 		if (isset($_GET["error"]) && trim($_GET["error"]) !== ""){
 			switch ($_GET["error"]){
 				case "404":
-					$error_txt = "&Egrave; un errore 404!";
+					$error_txt = "Questo &egrave; un errore 404 e la pagina non esiste!";
 					break;
 				default:
 					$error_txt = "Si &egrave; verificato un errore!";
@@ -72,7 +72,7 @@
 			?>
 			<div id="message">
 				<h1>Whooh...</h1>
-				<h2>Che ci fai qui oggi?</h2>
+				<h2>Ti sei perso?</h2>
 				<h3><?php print $error_txt; ?></h3>
 			</div>
 			<?php
