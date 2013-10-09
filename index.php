@@ -644,7 +644,7 @@ function compress_html($compress){
 	$i = array('/\>\n+/', '/\t+/', '/\r+/', '/\n+/');
 	$ii = array('>', '', '', ' ');
 	$caratteri_a = array("à", "è", "é", "ì", "ò", "ù", "À", "È", "É", "Ì", "Ò", "Ù");
-	$caratteri_b = array("a`", "e`", "e`", "i`", "o`", "u`", "A`", "E`", "I`", "O`", "U`");
+	//$caratteri_b = array("a`", "e`", "e`", "i`", "o`", "u`", "A`", "E`", "I`", "O`", "U`");
 	$caratteri_c = array("�", "�", "�", "�", "�", "�", "�", "�", "�", "�", "�", "�");
 	$charset = array("&agrave;", "&egrave;", "&eacute;", "&igrave;", "&ograve;", "&ugrave;", "&Agrave;", "&Egrave;", "&Eacute;", "&Igrave;", "&Ograve;", "&Ugrave;");
 	return str_replace($caratteri_a, $charset, str_replace($caratteri_b, $charset, str_replace($caratteri_c, $charset, preg_replace($i, $ii, $compress))));
