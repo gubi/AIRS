@@ -1,6 +1,6 @@
 <?php
 /**
-* This is a main index file for AIRS wiki
+* This is the config installer file for AIRS
 * 
 *  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 *		Automatic Intelligent Research System											
@@ -26,11 +26,6 @@
 * @SLM_is_core	true
 * @SLM_status	ok
 */
-if (isset($_POST["form_submit"])) {
-	header("Content-type: text/plain");
-	print_r($_POST);
-	exit();
-}
 require_once("common/include/classes/class.html_element.php");
 require_once("common/include/funcs/email_verify_source.php");
 
@@ -91,7 +86,6 @@ require_once("common/include/conf/install_data.php");
 				}
 			});
 			if(okay == true) {
-				// Controlla parametri mail
 				loader("Controllo i parametri di connessione al database...", "show");
 				var mail_check = $.check_mail("", function(arg) {
 					if(arg) {
@@ -111,7 +105,6 @@ require_once("common/include/conf/install_data.php");
 						}
 					}
 				});
-				// Controlla parametri mail
 				loader("Controllo i parametri di connessione al database...", "show");
 				var db_check = $.check_db("", function(arg) {
 					if(arg == "ok") {
@@ -181,7 +174,6 @@ require_once("common/include/conf/install_data.php");
 				uncheckedLabel: '<?php print $i18n["no"]; ?>',
 				classes: "ui-switchbutton-thin"
 			}).change(function(){
-				// Trasformazione automatica http:// in https:// in base a checkbox "system_need_ssl"
 				if($(this).attr("id") == "system_need_ssl") {
 					var replace_from = (!$(this).prop("checked") ? "https://" : "http://"),
 					replace_to = (!$(this).prop("checked") ? "http://" : "https://");
@@ -205,7 +197,6 @@ require_once("common/include/conf/install_data.php");
 			<h1><?php print $i18n["form_install_title"]; ?></h1>
 			<?php require_once("common/tpl/_airs_logo.tpl"); ?>
 		</div>
-		<!--div id="right_guide"></div-->
 		<div id="container">
 			<?php
 			if (!isset($_POST["form_submit"])) {

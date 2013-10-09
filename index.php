@@ -1,6 +1,6 @@
 <?php
 /**
-* This is a main index file for AIRS wiki
+* This is the main index file of AIRS wiki
 * 
 *  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 *		Automatic Intelligent Research System											
