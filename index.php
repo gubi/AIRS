@@ -1,7 +1,3 @@
----
-layout: wiki
-title: AIRS - Automatic Intelligent Research System
----
 <?php
 /**
 * This is the main index file of AIRS wiki
