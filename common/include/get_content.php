@@ -65,7 +65,7 @@ if ($content->rowCount() > 0){
 		}
 	}
 	while ($dato_content = $content->fetch()){
-		// Redireziona se � inserito nel contenuto
+		// Redirect if there's a content
 		if(!$GLOBALS["is_functioned"]){
 			preg_match('/.*?\-\->(.*)/', $dato_content["body"], $matched);
 			if (count($matched) > 0){
@@ -111,7 +111,7 @@ if ($content->rowCount() > 0){
 			pdf($content_title, $content_body, get_link($content_title));
 			exit();
 		}
-		// Se c'è la funzione sulla pagina
+		// If there's a function on page
 		if($GLOBALS["is_functioned"]){
 			switch(strtolower($GLOBALS["function_part"])){
 				case strtolower($i18n["page_name_special"]):
@@ -232,7 +232,7 @@ if ($content->rowCount() > 0){
 			$GLOBALS["allow_discussions"] = 0;
 			$GLOBALS["allow_chronology"] = 0;
 			
-			// Se c'� la funzione sulla pagina
+			// If there's a function on page
 			if($GLOBALS["is_functioned"]){
 				switch(strtolower($GLOBALS["function_part"])){
 					case strtolower($i18n["menu_edit"]);
@@ -277,7 +277,7 @@ if ($content->rowCount() > 0){
 			}
 			break;
 		default:
-			// Se c'� la funzione sulla pagina
+			// If there's a function on page
 			if($GLOBALS["is_functioned"]){
 				switch(strtolower($GLOBALS["function_part"])){
 					case strtolower($i18n["search_string"]):
@@ -445,7 +445,7 @@ if (strlen($content_last_edit) > 0){
 			?>
 			<td valign="top" id="content_right_panel" class="<?php print $right_panel_class; ?>">
 				<?php
-				// Pulsanti laterali
+				// Right panel buttons
 				require_once("common/tpl/right_panel_btns.tpl");
 				
 				if ($show_right_panel == 1){
