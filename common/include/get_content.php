@@ -65,7 +65,7 @@ if ($content->rowCount() > 0){
 		}
 	}
 	while ($dato_content = $content->fetch()){
-		// Redireziona se è inserito nel contenuto
+		// Redireziona se ï¿½ inserito nel contenuto
 		if(!$GLOBALS["is_functioned"]){
 			preg_match('/.*?\-\->(.*)/', $dato_content["body"], $matched);
 			if (count($matched) > 0){
@@ -232,7 +232,7 @@ if ($content->rowCount() > 0){
 			$GLOBALS["allow_discussions"] = 0;
 			$GLOBALS["allow_chronology"] = 0;
 			
-			// Se c'è la funzione sulla pagina
+			// Se c'ï¿½ la funzione sulla pagina
 			if($GLOBALS["is_functioned"]){
 				switch(strtolower($GLOBALS["function_part"])){
 					case strtolower($i18n["menu_edit"]);
@@ -277,7 +277,7 @@ if ($content->rowCount() > 0){
 			}
 			break;
 		default:
-			// Se c'è la funzione sulla pagina
+			// Se c'ï¿½ la funzione sulla pagina
 			if($GLOBALS["is_functioned"]){
 				switch(strtolower($GLOBALS["function_part"])){
 					case strtolower($i18n["search_string"]):
@@ -417,7 +417,7 @@ if (strlen($content_last_edit) > 0){
 						} else {
 							$prev_link = $GLOBALS["page_m"];
 						}
-						$content_last_edit = '<a href="./' . $prev_link . '" title="' . $i18n["go_to_page"] . ' ' . $GLOBALS[$GLOBALS["page_last_level_type"]] . '">' . $GLOBALS[$GLOBALS["page_last_level_type"]] . '</a>: ';
+						$content_last_edit = '<a href="./' . $prev_link . '" title="' . $i18n["go_to_page"] . ' ' . $GLOBALS[$GLOBALS["page_last_level_type"]] . '">' . str_replace("_", " ", $GLOBALS[$GLOBALS["page_last_level_type"]]) . '</a>: ';
 					}
 					?>
 					<h1><?php print $content_last_edit; ?><span class="title"><?php print $content_title; ?></span></h1>
