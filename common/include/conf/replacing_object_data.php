@@ -31,7 +31,7 @@ switch($origin){
 }
 require_once($funcs_path . "/funcs/_converti_data.php");
 require_once($funcs_path . "/funcs/_blowfish.php");
-$key = "inran_dev_2011";
+$key = $config["system"]["key"];
 $crypted_user_key = $_COOKIE["iack"];
 $decrypted_user = PMA_blowfish_decrypt($_COOKIE["iac"], $_COOKIE["iack"]);
 

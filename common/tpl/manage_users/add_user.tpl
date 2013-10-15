@@ -114,7 +114,7 @@ Add_user_form;
 				$invitor_name = ucwords($dato_invitor["name"]);
 			}
 			$to = ucwords($_POST["user_name"] . " " . $_POST["user_lastname"]) . " <" . $_POST["user_email"] . ">";
-			$key = "inran_dev_2011";
+			$key = $config["system"]["key"];
 			$token = PMA_blowfish_encrypt($_POST["user_email"] . "~" . date("d-m-Y H:i:s"), $key);
 			
 			if (substr($name, -1) == "a"){

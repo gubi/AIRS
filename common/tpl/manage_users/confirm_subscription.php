@@ -50,7 +50,7 @@ Form_ceck_registration;
 	} else {
 		require_once("common/include/funcs/_blowfish.php");
 		
-		$key = "inran_dev_2011";
+		$key = $config["system"]["key"];
 		$token = PMA_blowfish_decrypt($_POST["token"], $key);
 		
 		$parsed_token = explode("~", $token);

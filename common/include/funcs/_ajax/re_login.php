@@ -25,7 +25,7 @@ require_once("../../.mysql_connect.inc.php");
 if (isset($_GET["k1"]) && trim($_GET["k1"]) !== "" && isset($_GET["k2"]) && trim($_GET["k2"]) !== ""){
 	require_once("../_blowfish.php");
 	
-	$key = "inran_dev_2011";
+	$key = $config["system"]["key"];
 	$encrypted_key = PMA_blowfish_encrypt(urldecode($_GET["k2"]), $key);
 	$crypted_user = PMA_blowfish_encrypt(urldecode($_GET["u"]), $encrypted_key);
 	if (urldecode($_GET["k1"]) !== $encrypted_key){
@@ -42,10 +42,10 @@ if (isset($_GET["k1"]) && trim($_GET["k1"]) !== "" && isset($_GET["k2"]) && trim
 				print join(", ", $booking_page->errorInfo());
 				exit();
 			}
-			setcookie("iac", "null", time() - 9999,"",  ".airs.inran.it");
-			setcookie("iack", "null", time() - 9999,"",  ".airs.inran.it");
-			setcookie("iac", $crypted_user, $hour,"",  ".airs.inran.it");
-			setcookie("iack", $encrypted_key, $hour,"",  ".airs.inran.it");
+			setcookie("iac", "null", time() - 9999,"",  "." . $config["company"]["url"]);
+			setcookie("iack", "null", time() - 9999,"",  "." . $config["company"]["url"]);
+			setcookie("iac", $crypted_user, $hour,"",  "." . $config["company"]["url"]);
+			setcookie("iack", $encrypted_key, $hour,"",  "." . $config["company"]["url"]);
 			
 			$reconnected_user = $pdo->prepare("update `airs_users` set `is_connected` = '1' where `username` = '" . addslashes($_GET["u"]) . "'");
 			if ($reconnected_user->execute()){

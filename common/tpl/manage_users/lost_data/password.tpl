@@ -28,7 +28,7 @@ if(!isset($_POST["captcha_res"]) || $_POST["captcha_res"] !== $_COOKIE["rs"]){
 	require_once("common/tpl/manage_users/lost_data/form_password.tpl");
 } else {
 	require_once("common/include/funcs/_blowfish.php");
-	$key = "inran_dev_2011";
+	$key = $config["system"]["key"];
 	$encrypted_key = PMA_blowfish_encrypt($_POST["key"], $key);
 	$token = PMA_blowfish_encrypt($_POST["email"] . "~" . date("d-m-Y H:i:s"), $key);
 	$rand_time = rand(5, 10);

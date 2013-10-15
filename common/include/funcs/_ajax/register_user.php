@@ -25,7 +25,7 @@ if (isset($_COOKIE["ias"])){
 	require_once("../mail.send.php");
 	require_once("../../.mysql_connect.inc.php");
 	
-	$key = "inran_dev_2011";
+	$key = $config["system"]["key"];
 	$decrypted_cookie = PMA_blowfish_decrypt($_COOKIE["ias"], $key);
 	$parsed_cookie = explode("~", $decrypted_cookie);
 	$email = $parsed_cookie[0];
