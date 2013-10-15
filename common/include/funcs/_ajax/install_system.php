@@ -6,7 +6,7 @@ $ini .= "\n";
 $ini .= "[system]\n";
 $ini .= "type = \"" . $_POST["system_type"] . "\" ; use 'beta|develop', empty for official release\n";
 $ini .= "need_ssl = \"" . $_POST["system_need_ssl"] . "\"\n";
-$ini .= "key = \"" . $_POST["system_key"] . "\" ; Public System key\n";
+$ini .= "key = \"" . $_POST["system_key"] . "\" ; System GPG passphrase\n";
 $ini .= "default_host_uri = \"" . $_POST["system_host"] . "\"\n";
 $ini .= "\n";
 $ini .= "[mail]\n";

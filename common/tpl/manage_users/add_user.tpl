@@ -174,8 +174,7 @@ Add_user_form;
 				$html .= "Beh, a presto allora!";
 			
 			ob_start();
-			@send_mail($to, $subject, $text);
-			@send_mail("gubi.ale@gotanotherway.com", $subject, $text, $html);
+			@send_mail($to, $subject, $text, $html);
 			$send_mail_status = ob_get_clean();
 			
 			if(trim($send_mail_status) == "OK"){
