@@ -66,7 +66,7 @@ if(!isset($_COOKIE["iac"])){
 				}
 			}
 			function save_registration(){
-				if($("#user_key_pubring").val() != "") {
+				if($("#user_key_pubring").val() == "") {
 					loader("<br />Generazione della chiave di cifratura in corso...<br />(può richiedere diverso tempo)", "show");
 				} else {
 					loader("<br />Salvataggio dei dati...", "show");
