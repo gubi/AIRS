@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName>AIRS</ShortName>
+	<LongName>AIRS - Automatic Intelligent Research System</LongName>
+	<Description></Description>
+	<Tags></Tags>
+	<Developer>Alessandro Gubitosi</Developer>
+
+	<Contact></Contact>
+	<Url type="text/html" method="GET" template="https://airs.inran.it/Cerca:{searchTerms}"/>
+	<Url type="application/opensearchdescription+xml" rel="self" template="https://airs.inran.it/osd.xml"/>
+	<Url type="application/x-suggestions+json" template="https://airs.inran.it/Cerca:{searchTerms}"/>
+
+	<Image height="16" width="16" type="image/x-icon">common/media/favicon.ico</Image>
+	<Query role="example" searchTerms="INRAN" />
+	<Attribution>
+		Alessandro Gubitosi
+	</Attribution>
+	<SyndicationRight>open</SyndicationRight>
+
+	<AdultContent>false</AdultContent>
+	<Language>it</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

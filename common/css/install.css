@@ -15,7 +15,7 @@
 	font-family: "Ubuntu";
 	font-style: normal;
 	font-weight: normal;
-	src: local("Ubuntu"), url("common/media/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
+	src: local("Ubuntu"), url("common/media/font/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
 }
 body {
 	font-family: Ubuntu,"Ubuntu Beta",UbuntuBeta,"Bitstream Vera Sans","DejaVu Sans",Tahoma,sans-serif;

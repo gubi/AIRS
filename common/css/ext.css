@@ -15,7 +15,7 @@
     font-family: "Ubuntu";
     font-style: normal;
     font-weight: normal;
-    src: local("Ubuntu"), url("../media/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
+    src: local("Ubuntu"), url("../media/font/woff/_xyN3apAT_yRRDeqB3sPRg.woff") format("woff");
 }
 /* Bordini di firefox */
 :focus {outline:none;}
