@@ -69,7 +69,7 @@ function gnugpg(){			// initialization of class variables
 
   This function check if the private gnupg dir exist for the user $userName
  */
- function check_private_dir(){
+ function check_private_dir($imp){
  	// clear the filesystem cache
 	clearstatcache();
 
@@ -77,8 +77,24 @@ function gnugpg(){			// initialization of class variables
 
 	// check if the user dir exists
 	if(!is_dir($priv_path)){
-		$this->error = "Error: The user dir doesn't exist. (in function check_private_dir - 1)";
-		return(false);
+		if($imp == "true") {
+			if(!file_exists($priv_path)){
+				if(!mkdir($priv_path, 0777, true)){
+					$this->error = "Error: Can't create a new user dir. (in function gen_key - 6) " . $this->gpg_path;
+					return(false);
+				}
+				if(!mkdir($priv_path . "/.gnupg", 0777, true)){
+					$this->error = "Error: Can't create the gnupg dir. (in function gen_key - 7)";
+					return(false);
+				}
+			} else {
+				$this->error = "Error: The user dir exist, please try another name. (in function gen_key - 8)";
+				return(false);
+			}
+		} else {
+			$this->error = "Error: The user dir doesn't exist. (in function check_private_dir - 1)";
+			return(false);
+		}
 	}
 
 	return(true);
@@ -91,19 +107,19 @@ function gnugpg(){			// initialization of class variables
 
   This function check if the pubring.gpg exists
  */
- function check_pubring(){
+ function check_pubring($imp){
  	// clear the filesystem cache
 	clearstatcache();
+	if($imp !== "true") {
+		$file_ = $this->gpg_path.ereg_replace("[@]","_",$this->userEmail)."/.gnupg/pubring.gpg";
 
-	$file_ = $this->gpg_path.ereg_replace("[@]","_",$this->userEmail)."/.gnupg/pubring.gpg";
+		// check if the user dir exists
+		if(!file_exists($file_)){
+			$this->error = "Error: The user pubring does not exists. Maybe the key was not be generated. (in function check_pubring - 1)";
 
-	// check if the user dir exists
-	if(!file_exists($file_)){
-		$this->error = "Error: The user pubring does not exists. Maybe the key was not be generated. (in function check_pubring - 1)";
-
-		return(false);
+			return(false);
+		}
 	}
-
 	return(true);
 
  } // end function check_pubring
@@ -114,9 +130,9 @@ function gnugpg(){			// initialization of class variables
 
   This function check the private dir and the pubring
  */
- function check_all(){
+ function check_all($imp = ""){
 
-	if(!$this->check_private_dir() OR !$this->check_pubring()){
+	if(!$this->check_private_dir($imp) OR !$this->check_pubring($imp)){
 		return(false);
 	}
 	return(true);
@@ -194,9 +210,9 @@ function gnugpg(){			// initialization of class variables
   check if exist the user dir exist and if the keyID is on the keyring.
   Returns false when failed, or true.
  */
- function check_keyID($keyID){
+ function check_keyID($keyID, $imp = ""){
 
-  	if(!$this->check_all()){
+  	if(!$this->check_all($imp)){
 		return(false);
 	}
 
@@ -453,12 +469,12 @@ function gnugpg(){			// initialization of class variables
  */
  function import_key($key = ""){
 
-  	if(!$this->check_all()){
+  	if(!$this->check_all("true")){
 		return(false);
 	}
 	
  	// first check if the key is on the keyring
-	if (!$this->check_keyID($this->recipientEmail)){
+	if (!$this->check_keyID($this->recipientEmail, "true")){
 		return(false);
 	} 
 

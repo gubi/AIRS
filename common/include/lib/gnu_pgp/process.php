@@ -8,6 +8,10 @@ $recipientName = $_POST["recipientName"];
 $recipientEmail = $_POST["recipientEmail"];
 $message = $_POST["message"];
 $passphrase = $_POST["passphrase"];
+$key = $_POST["key"];
+$nameID = $_POST["nameID"];
+$emailID = $_POST["emailID"];
+$keyID = $_POST["keyID"];
 
 $gpg = new gnugpg;
 $gpg->userName = $userName;

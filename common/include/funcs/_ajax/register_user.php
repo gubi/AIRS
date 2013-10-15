@@ -25,6 +25,7 @@ if (isset($_COOKIE["ias"])){
 	require_once("../mail.send.php");
 	require_once("../../.mysql_connect.inc.php");
 	
+	$config = parse_ini_file("../../conf/airs.conf", 1);
 	$key = $config["system"]["key"];
 	$decrypted_cookie = PMA_blowfish_decrypt($_COOKIE["ias"], $key);
 	$parsed_cookie = explode("~", $decrypted_cookie);
@@ -43,13 +44,23 @@ if (isset($_COOKIE["ias"])){
 		$user_email = $email;
 		$comment = $_POST["user_key_comment"];
 		$passphrase = $_POST["user_key"];
+		$recipientName = $_POST["recipientName"];
+		$recipientEmail = $_POST["recipientEmail"];
+		$user_key_pubring = $_POST["user_key_pubring"];
 		
 		$gpg->userName = $user_name;
 		$gpg->userEmail = $user_email;
+		$gpg->recipientName = $recipientName;
+		$gpg->recipientEmail = $recipientEmail;
 		$gpg->message = $comment;
 		
-		// Genera la chiave di cifratura
-		$result = $gpg->gen_key($user_name, $comment, $user_email, $passphrase);
+		if(trim($user_key_pubring) == "") {
+			// Generate key
+			$result = $gpg->gen_key($user_name, $comment, $user_email, $passphrase);
+		} else {
+			// Import key
+			$result = $gpg->import_key($user_key_pubring);
+		}
 		if(!$result){
 			print $gpg->error;
 			exit();
