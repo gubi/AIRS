@@ -22,7 +22,7 @@
 if(!isset($_COOKIE["iac"])){
 	if (isset($_COOKIE["ias"])){
 		require_once("common/include/funcs/_blowfish.php");
-		$key = "inran_dev_2011";
+		$key = $config["system"]["key"];
 		$decrypted_cookie = PMA_blowfish_decrypt($_COOKIE["ias"], $key);
 		$parsed_cookie = explode("~", $decrypted_cookie);
 		$email = $parsed_cookie[0];
@@ -66,7 +66,11 @@ if(!isset($_COOKIE["iac"])){
 				}
 			}
 			function save_registration(){
-				loader("<br />Generazione della chiave di cifratura in corso...<br />(può richiedere diverso tempo)", "show");
+				if($("#user_key_pubring").val() != "") {
+					loader("<br />Generazione della chiave di cifratura in corso...<br />(può richiedere diverso tempo)", "show");
+				} else {
+					loader("<br />Salvataggio dei dati...", "show");
+				}
 				$.post("common/include/funcs/_ajax/register_user.php", $("#registration_form form").serialize(), function(data){
 					if(data == "OK"){
 						window.location.replace("http://airs.inran.it/Speciale:Accedi");
@@ -137,15 +141,31 @@ if(!isset($_COOKIE["iac"])){
 									<a target="_blank" href="./Sicurezza/Chiave_di_cifratura">Perché la chiave di cifratura</a>
 									<br />
 									<br />
-									<table cellspacing="5" cellpadding="5" style="width: 100%;">
+									<table cellspacing="0" cellpadding="0" style="width: 100%;">
 										<tr>
-											<td>
-												<input type="text" autocomplete="off" id="key" name="user_key" size="36" placeholder="Chiave di cifratura" required="required" value="" />
+											<td valign="top">
+												<table cellspacing="0" cellpadding="0" style="width: 100%;">
+													<tr>
+														<td>
+															<textarea id="user_key_pubring" name="user_key_pubring" placeholder="Incolla il contenuto del file PGP pubring" style="width: 90%;" rows="5"></textarea>
+														</td>
+													</tr>
+												</table>
 											</td>
-										</tr>
-										<tr>
-											<td>
-												<textarea id="user_key_comment" name="user_key_comment" placeholder="Commento (opzionale)" style="width: 50%;"></textarea>
+											<td>oppure</td>
+											<td valign="top">
+												<table cellspacing="5" cellpadding="5" style="width: 100%;">
+													<tr>
+														<td>
+															<input type="text" autocomplete="off" id="key" name="user_key" size="36" placeholder="Nuova chiave di cifratura" required="required" value="" />
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<textarea id="user_key_comment" name="user_key_comment" placeholder="Commento (opzionale)" style="width: 50%;"></textarea>
+														</td>
+													</tr>
+												</table>
 											</td>
 										</tr>
 									</table>
