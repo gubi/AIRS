@@ -76,7 +76,7 @@ table.list tbody tr:hover {
 	background-color: #f0f0f0;
 }
 table.list tbody tr.view:hover {
-	background: #f0f0f0 url(../media/img/viewer_text_128_ccc.png) 99% 10px no-repeat;
+	background: #f0f0f0 url(../../media/img/viewer_text_128_ccc.png) 99% 10px no-repeat;
 }
 table.list tbody tr.view:hover a {
 	text-decoration: underline;
@@ -203,46 +203,46 @@ table.controls td:hover {
 	cursor: pointer;
 }
 table.controls td.edit {
-	background: url(../media/img/edit_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/edit_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.cancel {
-	background: url(../media/img/minus_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/minus_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.feed {
-	background: url(../media/img/feed_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/feed_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.news_link {
-	background: url(../media/img/news_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/news_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.restore {
-	background: url(../media/img/accept_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/accept_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.stop {
-	background: url(../media/img/controls_stop_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_stop_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.pause {
-	background: url(../media/img/controls_pause_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_pause_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.play {
-	background: url(../media/img/controls_play_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_play_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.disable {
 	background-color: #f0f0f0 !important;
 }
 table.controls td.eject {
-	background: url(../media/img/controls_eject_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_eject_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.controls td.logout {
-	background: url(../media/img/logout_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/logout_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 table.list {
@@ -250,7 +250,7 @@ table.list {
 }
 
 tr.force_delete td.remove {
-	background: url(../media/img/cancel_16_333.png) center center no-repeat !important;
+	background: url(../../media/img/cancel_16_333.png) center center no-repeat !important;
 	padding: 15px !important;
 }
 
@@ -263,17 +263,17 @@ td.date{
 	width: 15% !important;
 }
 td.play {
-	background: url(../media/img/controls_play_32_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_play_32_333.png) center center no-repeat !important;
 	width: 34px !important;
 	padding: 26px !important;
 }
 td.stop {
-	background: url(../media/img/controls_stop_32_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_stop_32_333.png) center center no-repeat !important;
 	width: 34px !important;
 	padding: 26px !important;
 }
 td.pause {
-	background: url(../media/img/controls_pause_32_333.png) center center no-repeat !important;
+	background: url(../../media/img/controls_pause_32_333.png) center center no-repeat !important;
 	width: 34px !important;
 	padding: 26px !important;
 }

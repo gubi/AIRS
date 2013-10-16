@@ -104,7 +104,7 @@ if ($content->rowCount() > 0){
 		if ($is_functioned && $GLOBALS["function"] == "Pdf"){
 			require_once("common/include/lib/FPDF/get_pdf_of_page.php");
 			require_once("Text/Wiki.php");
-			require_once("common/include/conf/Wiki/rendering.php");
+			require_once("conf/Wiki/rendering.php");
 			$output = $wiki->transform(stripslashes(utf8_decode($content_wiki)), "Xhtml");
 			$output = utf8_decode(mb_convert_encoding($output, "UTF-8", "HTML-ENTITIES"));
 			$content_body .= stripslashes($output);
@@ -184,7 +184,7 @@ if ($content->rowCount() > 0){
 			require_once("common/tpl/_top_menu.tpl");
 			if (strlen($dato_content["manual_content_page"]) == 0){
 				require_once("Text/Wiki.php");
-				require_once("common/include/conf/Wiki/rendering.php");
+				require_once("conf/Wiki/rendering.php");
 				$output = $wiki->transform(stripslashes(utf8_decode($content_wiki)), "Xhtml");
 				
 				$content_body .= stripslashes($output);
@@ -193,7 +193,7 @@ if ($content->rowCount() > 0){
 					$GLOBALS["allow_discussions"] = $dato_content["allow_discussions"];
 					if (strlen($content_wiki) > 0){
 						require_once("Text/Wiki.php");
-						require_once("common/include/conf/Wiki/rendering.php");
+						require_once("conf/Wiki/rendering.php");
 						$output = $wiki->transform(stripslashes(utf8_decode($content_wiki)), "Xhtml");
 						
 						$content_body .= stripslashes($output);
@@ -238,7 +238,7 @@ if ($content->rowCount() > 0){
 					case strtolower($i18n["menu_edit"]);
 						if (strtolower($decrypted_user) == strtolower($GLOBALS["page"])){
 							$content_subtitle = $i18n["page_title_personal"];
-							require_once("common/tpl/create_personal_page.tpl");
+							require_once("common/tpl/manage_users/create_personal_page.tpl");
 						} else {
 							$content_body = $message->generate_error(405);
 						}
