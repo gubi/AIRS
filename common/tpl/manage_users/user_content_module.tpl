@@ -2,10 +2,18 @@
 if(!class_exists(EasyRdf_Graph)) {
 	require_once("EasyRDF/autoload.php");
 }
+function tr($img, $content = "") {
+	if($img == "" || $content == "") {
+		return "<tr><td>&nbsp;</td></tr>";
+	} else if (strlen($content) == 0) {
+		return "";
+	} else {
+		return '<tr><th valign="top"><img src="common/media/img/' . $img . '" /></th><td>' . $content . '</td></tr>';
+	}
+}
 
+$foaf_file = $config["system"]["default_host_uri"] . $i18n["user_string"] . "/" . ucfirst(strtolower($GLOBALS["page_id"])) . "/foaf.rdf";
 
-$user_foaf_uri = $config["system"]["default_host_uri"] . $i18n["user_string"] . "/" . ucfirst(strtolower($GLOBALS["page_id"])) . "/foaf.rdf";
-/*
 EasyRdf_Namespace::set("cc", "http://web.resource.org/cc/");
 EasyRdf_Namespace::set("dc", "http://purl.org/dc/elements/1.1/");
 EasyRdf_Namespace::set("dcterms", "http://purl.org/dc/terms/");
@@ -17,8 +25,10 @@ EasyRdf_Namespace::set("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 EasyRdf_Namespace::set("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
 EasyRdf_Namespace::set("rsa", "http://www.w3.org/ns/auth/rsa#");
 EasyRdf_Namespace::set("wot", "http://xmlns.com/wot/0.1/");
+
 $foaf = EasyRdf_Graph::newAndLoad($foaf_file);
 $person = $foaf->primaryTopic();
+$pgp = $foaf->get('wot:PubKey', '^rdf:type');
 
 $name = ucwords(strtolower($person->get("foaf:givenname") . " " . $person->get("foaf:family_name")));
 $nick = ($person->get("foaf:nick") ? $person->get("foaf:nick") : "");
@@ -27,11 +37,11 @@ $homepage = ($person->get("foaf:homepage") ? '<a href="' . $person->get("foaf:ho
 $weblog = ($person->get("foaf:weblog") ? '<a href="' . $person->get("foaf:weblog") . '" target="_blank">' . $person->get("foaf:weblog"). '</a>' : "");
 $workplaceHomepage = ($person->get("foaf:workplaceHomepage") ? '<a href="' . $person->get("foaf:workplaceHomepage") . '" target="_blank">' . $person->get("foaf:workplaceHomepage"). '</a>' : "");
 $workInfoHomepage = ($person->get("foaf:workInfoHomepage") ? '<a href="' . $person->get("foaf:workInfoHomepage") . '" target="_blank">' . $person->get("foaf:workInfoHomepage"). '</a>' : "");
-$pgpKey = ((strlen($person->get("wot:hasKey")) > 0) ? $person->get("wot:PubKey/wot:hex_id") : "");
+$pgpKey = ((strlen($person->get("wot:hasKey")) > 0) ? $pgp->get("wot:hex_id") : "");
+$pgpLength = ((strlen($person->get("wot:hasKey")) > 0) ? $pgp->get("wot:length") : "");
+$pgpFingerprint = ((strlen($person->get("wot:hasKey")) > 0) ? $pgp->get("wot:fingerprint") : "");
+$pgpAddress = ((strlen($person->get("wot:hasKey")) > 0) ? $pgp->get("wot:pubkeyAddress") : "");
 
-$person->add('wot:PubKey', $foaf_file);
-
-print $person->get("wot:PubKey/wot:hex_id");
 if (isset($person)) {
 	$table = '<div id="toc">';
 		$table .= '<h1><img src="common/media/img/avatar_16_999.png" />&nbsp;&nbsp;' . strtoupper($nick) . '</h1>';
@@ -52,13 +62,12 @@ if (isset($person)) {
 		$table .= tr("industry_16_999.png", $workplaceHomepage);
 		$table .= tr("industry_info_16_999.png", $workInfoHomepage);
 		$table .= tr("");
-		$table .= tr("security_closed_16_999.png.png", $pgpKey);
+		$table .= tr("security_closed_16_999.png", '<a href="' . $pgpAddress . '">' . $pgpKey . "</a> (" . $pgpLength . ")<br />Fingerprint: " . $pgpFingerprint);
 		$table .= '</table></div>';
 	$table .= '</div>';
 	print $table;
 	
 }
-*/
 ?>
 <script type="text/javascript">
 function tr(img, content) {
@@ -84,7 +93,7 @@ $(document).ready(function(){
 	fingerprint,
 	username = "",
 	knows;
-	$.get("common/include/funcs/_ajax/rdf2json_array.php", {resources: "<?php print $user_foaf_uri; ?>"}, function(data){
+	$.get("common/include/funcs/_ajax/rdf2json_array.php", {resources: "<?php print $foaf_uri; ?>"}, function(data){
 		$.each(data, function(index, item){
 			$("#toc").html('<h1><img src="common/media/img/avatar_16_999.png" />&nbsp;&nbsp;' + item.primaryTopic.nick.toUpperCase() + '</h1><div class="toc_content"><table cellspacing="2" cellpadding="2" id="user_content_module"></table></div>');
 			name = ucwords(item.primaryTopic.givenname.toLowerCase() + " " + item.primaryTopic.family_name.toLowerCase());

@@ -4,8 +4,7 @@ $group_start_no = (count($foaf_group) > 0) ? count($foaf_group) + 1 : 1;
 if(is_array($foaf_group) && count($foaf_group) > 0) {
 	$kno_gr = 1;
 	foreach ($foaf_group as $currentGroup) {
-		print_r($currentGroup);
-		exit();
+		//exit();
 		$kno_gr++;
 		if($kno_gr > 2) {
 			$gr_remove_btn = '&emsp;<a href="javascript: void(0);" class="btn remove" style="float: none;" name="Rimuovi questo gruppo">-</a>';
@@ -34,7 +33,7 @@ if(is_array($foaf_group) && count($foaf_group) > 0) {
 						<a class="btn add" style="float: none;" href="javascript: void(0);" name="Aggiungi un gruppo">+</a>' . $gr_remove_btn . '
 					</td>
 				</tr>';
-		if($kno_gr < (count($foaf_group) + 1)) {
+		if($kno_gr < (count($group) + 1)) {
 			$gr_rows .= '<tr class="user_group addedtr_line"><td colspan="3"><hr></td></tr>';
 		}
 	}
@@ -44,16 +43,16 @@ if(is_array($foaf_group) && count($foaf_group) > 0) {
 					<table cellspacing="5" cellpadding="5" style="width: 95%;">
 						<tr>
 							<td>
-								<input type="text" style="width: 50%;" name="user_group_name_' . $kno_gr . '" rel="group" placeholder="Nome del gruppo" name="Nome del gruppo" value="' . $currentGroup->get("foaf:name") . '" />
+								<input type="text" style="width: 50%;" name="user_group_name_' . $kno_gr . '" rel="group" placeholder="Nome del gruppo" name="Nome del gruppo" value="' . $group->get("foaf:name") . '" />
 								<br />
 								<br />
-								<input id="user_group_logo_' . $kno_gr . '" type="uri" placeholder="Logo del gruppo (uri)" name="user_group_logo_' . $kno_gr . '" style="width: 50%;" value="' . $currentGroup->get("foaf:logo") . '" />
+								<input id="user_group_logo_' . $kno_gr . '" type="uri" placeholder="Logo del gruppo (uri)" name="user_group_logo_' . $kno_gr . '" style="width: 50%;" value="' . $group->get("foaf:logo") . '" />
 								<br />
 								<br />
-								<input type="uri" placeholder="Pagina del gruppo (url)" id="user_group_page_' . $kno_gr . '" name="user_group_page_' . $kno_gr . '" style="width: 50%;" value="' . $currentGroup->get("foaf:homepage") . '" />
+								<input type="uri" placeholder="Pagina del gruppo (url)" id="user_group_page_' . $kno_gr . '" name="user_group_page_' . $kno_gr . '" style="width: 50%;" value="' . $group->get("foaf:homepage") . '" />
 								<br />
 								<br />
-								<input type="text" style="width: 50%;" name="user_group_member_' . $kno_gr . '" placeholder="Nick" style="width: 50%;" value="' . $currentGroup->get("foaf:member") . '" />
+								<input type="text" style="width: 50%;" name="user_group_member_' . $kno_gr . '" placeholder="Nick" style="width: 50%;" value="' . $group->get("foaf:member") . '" />
 							</td>
 						</tr>
 					</table>

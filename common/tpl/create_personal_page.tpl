@@ -58,12 +58,11 @@ if ($select_user->rowCount() > 0){
 			EasyRdf_TypeMapper::set('wot:PubKey', 'Model_PubKey');
 			EasyRdf_TypeMapper::set('geo:Point', 'Model_GeoPoint');
 			
-			$foaf = new EasyRdf_Graph($foaf_uri);
+			$foaf = EasyRdf_Graph::newAndLoad($foaf_uri);
 			$foaf->load();
 			if ($foaf->type() == "foaf:PersonalProfileDocument") {
 				$person = $foaf->primaryTopic();
 			} else {
-				print $foaf->type() ."<br />";
 				switch($foaf->type()){
 					case "foaf:Person":
 						$person = $foaf->resource($foaf_uri);
@@ -74,6 +73,9 @@ if ($select_user->rowCount() > 0){
 						break;
 				}
 			}
+			$group = $foaf->get('foaf:Group', '^rdf:type');
+			$org = $foaf->get('foaf:Organization', '^rdf:type');
+			
 			if (isset($person)) {
 				/* Dati personali */
 				$personal_description = nl2br(trim($person->get("rdfs:comment")));
@@ -124,8 +126,6 @@ if ($select_user->rowCount() > 0){
 				/* Pubblicazioni */
 				$foaf_publication = $person->all("foaf:publications");
 				/* Gruppi di appartenenza */
-				$foaf_group = $person->all("foaf:Group");
-		print_r($foaf_current_project);
 			}
 	}
 }
@@ -137,6 +137,7 @@ require_once("common/tpl/manage_users/foaf_manager/publications_data_div.tpl");
 require_once("common/tpl/manage_users/foaf_manager/projects_data_div.tpl");
 require_once("common/tpl/manage_users/foaf_manager/interests_data_div.tpl");
 require_once("common/tpl/manage_users/foaf_manager/groups_data_div.tpl");
+
 $username = ucfirst($decrypted_user);
 $root = $absolute_path . ucfirst($i18n["user_string"]) . "/" . $username;
 
@@ -329,7 +330,9 @@ $(function(){
 	padding: 12px 0;
 	position: relative;
 	top: 10px;
-	font-size: 0.8em;
+}
+#tabs li {
+	font-size
 }
 #tabs li a, #tabs li a:focus, #tabs li a:visited {
 	padding: 10px;
