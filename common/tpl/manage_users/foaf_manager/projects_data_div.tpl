@@ -128,30 +128,22 @@ if(is_array($foaf_past_project) && count($foaf_past_project) > 0) {
 }
 $projects_data_div = <<<EOF
 <div id="projects_data_div" style="display: none;">
-	<form action="" method="post">
-		<br />
-		<fieldset>
-			<legend>Progetti correnti</legend>
-			<input type="hidden" id="cproject_no" value="1" />
-			<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_cproject">
-				$cp_rows
-			</table>
-		</fieldset>
-		<br />
-		<br />
-		<fieldset>
-			<legend>Progetti passati</legend>
-			<input type="hidden" id="pproject_no" value="1" />
-			<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_pproject">
-				$pp_rows
-			</table>
-		</fieldset>
-		<table cellpadding="10" cellspacing="10" style="width: 100%;">
-			<tr>
-				<td><hr /><input name="account_data_btn" type="submit" value="Salva" /></td>
-			</tr>
+	<fieldset>
+		<legend>Progetti correnti</legend>
+		<input type="hidden" id="cproject_no" value="1" />
+		<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_cproject">
+			$cp_rows
 		</table>
-	</form>
+	</fieldset>
+	<br />
+	<br />
+	<fieldset>
+		<legend>Progetti passati</legend>
+		<input type="hidden" id="pproject_no" value="1" />
+		<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_pproject">
+			$pp_rows
+		</table>
+	</fieldset>
 </div>
 EOF;
 ?>

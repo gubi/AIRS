@@ -18,10 +18,91 @@
 * @SLM_is_core	true
 * @SLM_status	ok
 */
+
+require_once("EasyRDF/autoload.php");
+EasyRdf_Namespace::set("admin", "http://webns.net/mvcb/");
+EasyRdf_Namespace::set("bibo", "http://purl.org/ontology/bibo/");
+EasyRdf_Namespace::set("cc", "http://web.resource.org/cc/");
+EasyRdf_Namespace::set("dc", "http://purl.org/dc/elements/1.1/");
+EasyRdf_Namespace::set("dcterms", "http://purl.org/dc/terms/");
+EasyRdf_Namespace::set("foaf", "http://xmlns.com/foaf/0.1/");
+EasyRdf_Namespace::set("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
+EasyRdf_Namespace::set("org", "http://www.w3.org/ns/org#");
+EasyRdf_Namespace::set("owl", "http://www.w3.org/2002/07/owl#");
+EasyRdf_Namespace::set("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+EasyRdf_Namespace::set("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
+EasyRdf_Namespace::set("rsa", "http://www.w3.org/ns/auth/rsa#");
+EasyRdf_Namespace::set("wot", "http://xmlns.com/wot/0.1/");
+EasyRdf_TypeMapper::set('wot:PubKey', 'Model_PubKey');
+EasyRdf_TypeMapper::set('geo:Point', 'Model_GeoPoint');
+
+$foaf_uri = $config["system"]["default_host_uri"] . ucfirst($i18n["user_string"]) . "/" . ucfirst($GLOBALS["page_id"]) . "/foaf.rdf";
+
 if(isset($_POST)) {
 	foreach($_POST as $k => $v) {
-		print $k . " ~ " . $v . "<br />";
+		if(is_array($v)) {
+			print $k . ": (<br />";
+			foreach ($v as $kv => $vv) {
+				print "&emsp;" . $kv . "<br />";
+				foreach ($vv as $kvv => $vvv) {
+					print "&emsp;&emsp;" . $kvv . " ~ " . $vvv . "<br />";
+				}
+			}
+			print ")<br />";
+		} else {
+			print $k . " ~ " . $v . "<br />";
+		}
 	}
+	$generatorAgent = $config["system"]["default_host_uri"] . "Sistema/Genera_foaf";
+	$errorReportsTo = "mailto:" . $cofig["mail"]["Errors-To"];
+	$foaf_name = $user_name . " " . $user_lastname;
+	$foaf_givenname = $user_name;
+	$foaf_family_name = $user_lastname;
+	if($_POST["user_sex"] !== "na") {
+		$gender = "<foaf:gender>" . (($_POST["user_sex"] == "m") ? "male" : "female") . "</foaf:gender>";
+	}
+	$foaf_dateOfBirth = $_POST["user_birthdate"];
+	$foaf_nick = ucfirst($decrypted_user);
+	$foaf_mbox = "mailto:" . $user_email;
+	$foaf_mbox_sha1 = sha1($user_email);
+	$foaf_homepage = $_POST["user_homepage"];
+	$foaf_weblog = $_POST["user_blog"];
+	$foaf_phone = "tel:" . $_POST["user_phone"];
+	$foaf_workplaceHomepage = $_POST["user_workplace"];
+	$foaf_workInfoHomepage = $_POST["user_workplace_info"];
+	$foaf_depiction = $_POST["foaf_depiction"];
+	$foaf_thumb = $_POST["foaf_thumb"];
+	$foaf_bio = $_POST["personal_bio"];
+	foreach($_POST["user_account"] as $ka => $accounts) {
+		$foaf_account .= "<foaf:account>\n";
+			$foaf_account .= '	<foaf:OnlineAccount rdf:about="' . $_POST["user_account"][$ka]["uri"] . $_POST["user_account"][$ka]["name"] . '/">' . "\n";
+			$foaf_account .= '		<foaf:accountName>' . $_POST["user_account"][$ka]["type"] . '</foaf:accountName>' . "\n";
+			$foaf_account .= '		<foaf:accountServiceHomepage rdf:resource="' . $_POST["user_account"][$ka]["uri"] . '"/>' . "\n";
+			$foaf_account .= '		<foaf:name>' . $_POST["user_account"][$ka]["name"] . '</foaf:name>' . "\n";
+			//$foaf_account .= '		<foaf:thumbnail rdf:resource="http://d3fildg3jlcvty.cloudfront.net/20130318-03/graphics/favicon.ico"/>' . "\n";
+			$foaf_account .= '	</foaf:OnlineAccount>\n';
+		$foaf_account .= '</foaf:account>\n';
+	}
+	foreach($_POST["user_knows"] as $kk => $knows) {
+		$foaf_knows .= "<foaf:knows>\n";
+		$foaf_knows .= "	<foaf:Person>\n";
+		$foaf_knows .= '		<foaf:name>' . $_POST["user_knows"][$kk]["name"] . '</foaf:name>' . "\n";
+		$foaf_knows .= '		<foaf:mbox rdf:resource="mailto:' . $_POST["user_knows"][$kk]["email"] . '/">' . "\n";
+		$foaf_knows .= '		<foaf:mbox_sha1sum>' . sha1($_POST["user_knows"][$kk]["email"]) . '</foaf:mbox_sha1sum>' . "\n";
+		$foaf_knows .= '		<rdfs:seeAlso rdf:resource="' . $_POST["user_knows"][$kk]["uri"] . '"/>' . "\n";
+		$foaf_knows .= '	</foaf:Person>\n';
+		$foaf_knows .= '</foaf:knows>\n';
+	}
+	print_r($_POST["user_publication"]);
+	foreach($_POST["user_publication"] as $kkp => $kv) {
+		$foaf_publication .= '<foaf:publications rdf:resource="' . $_POST["user_publication"][$kkp]["uri"] . '" />';
+	}
+	print $foaf_publication;
+	require_once("common/tpl/manage_users/foaf_manager/manual_foaf_generator.php");
+	
+	$fp = fopen($_SERVER["DOCUMENT_ROOT"] . ucfirst($i18n["user_string"]) . "/" . ucfirst($decrypted_user) . "/myText.rdf", "w");
+	fwrite($fp, $foaf_file);
+	fclose($fp);
 }
 $select_user = $pdo->query("select * from `airs_users` where `username` = '" . addslashes($decrypted_user) . "'");
 if ($select_user->rowCount() > 0){
@@ -39,41 +120,25 @@ if ($select_user->rowCount() > 0){
 		$mail_account_passwd = PMA_blowfish_decrypt($dato_user["mail_password"], $_COOKIE["iack"]);
 		$user_newsletter_frequency = $dato_user["newsletter_frequency"];
 		$user_session_length = $dato_user["session_length"];
-		
-			require_once("EasyRDF/autoload.php");
 			
-			$foaf_uri = $config["system"]["default_host_uri"] . $i18n["user_string"] . "/" . ucfirst(strtolower($GLOBALS["page_id"])) . "/foaf.rdf";
-			
-			EasyRdf_Namespace::set("cc", "http://web.resource.org/cc/");
-			EasyRdf_Namespace::set("dc", "http://purl.org/dc/elements/1.1/");
-			EasyRdf_Namespace::set("dcterms", "http://purl.org/dc/terms/");
-			EasyRdf_Namespace::set("foaf", "http://xmlns.com/foaf/0.1/");
-			EasyRdf_Namespace::set("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
-			EasyRdf_Namespace::set("org", "http://www.w3.org/ns/org#");
-			EasyRdf_Namespace::set("owl", "http://www.w3.org/2002/07/owl#");
-			EasyRdf_Namespace::set("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-			EasyRdf_Namespace::set("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
-			EasyRdf_Namespace::set("rsa", "http://www.w3.org/ns/auth/rsa#");
-			EasyRdf_Namespace::set("wot", "http://xmlns.com/wot/0.1/");
-			EasyRdf_TypeMapper::set('wot:PubKey', 'Model_PubKey');
-			EasyRdf_TypeMapper::set('geo:Point', 'Model_GeoPoint');
-			
-			$foaf = new EasyRdf_Graph($foaf_uri);
+			$foaf = EasyRdf_Graph::newAndLoad($foaf_uri);
 			$foaf->load();
 			if ($foaf->type() == "foaf:PersonalProfileDocument") {
 				$person = $foaf->primaryTopic();
 			} else {
-				print $foaf->type() ."<br />";
 				switch($foaf->type()){
 					case "foaf:Person":
 						$person = $foaf->resource($foaf_uri);
 						break;
 					case "foaf:Group":
 						$group = $foaf->properties($foaf_uri);
-						//print_r($foaf->primaryTopic());
+						print_r($foaf->primaryTopic());
 						break;
 				}
 			}
+			$group = $foaf->get('foaf:Group', '^rdf:type');
+			$org = $foaf->get('foaf:Organization', '^rdf:type');
+			
 			if (isset($person)) {
 				/* Dati personali */
 				$personal_description = nl2br(trim($person->get("rdfs:comment")));
@@ -124,8 +189,6 @@ if ($select_user->rowCount() > 0){
 				/* Pubblicazioni */
 				$foaf_publication = $person->all("foaf:publications");
 				/* Gruppi di appartenenza */
-				$foaf_group = $person->all("foaf:Group");
-		//print_r($foaf_current_project);
 			}
 	}
 }
@@ -327,12 +390,9 @@ $(function(){
 }
 #tabs li {
 	display: inline-block;
-	padding: 12px 0;
+	padding: 9px 0;
 	position: relative;
-	top: 10px;
-}
-#tabs li {
-	font-size
+	top: 0;
 }
 #tabs li a, #tabs li a:focus, #tabs li a:visited {
 	padding: 10px;
@@ -342,10 +402,10 @@ $(function(){
 	text-decoration: none;
 	color: #666 !important;
 }
-#tabs li:first-child a {
+#tabs li:first-child, #tabs li:first-child a {
 	border-top-left-radius: 5px;
 }
-#tabs li:last-child a {
+#tabs li:last-child, #tabs li:last-child a {
 	border-top-right-radius: 5px;
 }
 #tabs li.selected a {
@@ -373,7 +433,7 @@ $(function(){
 #tabs li.normal a:hover {
 	box-shadow: 0 0 0 transparent;
 	background-color: #f6f6f6;
-	padding: 11px 10px;
+	padding: 11px 10px 10px 10px;
 }
 #tabbed {
 	margin-top: 8px;
@@ -399,16 +459,23 @@ $(function(){
 		<li class="normal"><a href="javascript: void(0);" id="groups_data">Gruppi di appartenenza</a></li>
 	</ul>
 </div>
-<div id="tabbed">
-	$personal_data_div
-	$work_data_div
-	$accounts_data_div
-	$knows_data_div
-	$publications_data_div
-	$projects_data_div
-	$interests_data_div
-	$groups_data_div
-</div>
+<form method="post" action="">
+	<div id="tabbed">
+		$personal_data_div
+		$work_data_div
+		$accounts_data_div
+		$knows_data_div
+		$publications_data_div
+		$projects_data_div
+		$interests_data_div
+		$groups_data_div
+		
+		<hr />
+		<div style="display: inline-block; width: 100%;">
+			<input name="personal_data_btn" type="submit" value="Salva" />
+		</div>
+	</div>
+</form>
 CPP;
 
 require_once("common/include/conf/replacing_object_data.php");

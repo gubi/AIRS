@@ -4,7 +4,6 @@ $group_start_no = (count($foaf_group) > 0) ? count($foaf_group) + 1 : 1;
 if(is_array($foaf_group) && count($foaf_group) > 0) {
 	$kno_gr = 1;
 	foreach ($foaf_group as $currentGroup) {
-		//exit();
 		$kno_gr++;
 		if($kno_gr > 2) {
 			$gr_remove_btn = '&emsp;<a href="javascript: void(0);" class="btn remove" style="float: none;" name="Rimuovi questo gruppo">-</a>';
@@ -65,19 +64,15 @@ if(is_array($foaf_group) && count($foaf_group) > 0) {
 }
 $groups_data_div = <<<EOF
 <div id="groups_data_div" style="display: none;">
-	<form action="" method="post">
-		<br />
-		
-		<input type="hidden" id="group_no" value="1" />
-		<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_group">
-			$gr_rows
-		</table>
-		<table cellpadding="10" cellspacing="10" style="width: 100%;">
-			<tr>
-				<td><hr /><input name="account_data_btn" type="submit" value="Salva" /></td>
-			</tr>
-		</table>
-	</form>
+	<input type="hidden" id="group_no" value="1" />
+	<table cellpadding="10" cellspacing="10" style="width: 100%;" id="user_group">
+		$gr_rows
+	</table>
+	<table cellpadding="10" cellspacing="10" style="width: 100%;">
+		<tr>
+			<td><hr /><input name="account_data_btn" type="submit" value="Salva" /></td>
+		</tr>
+	</table>
 </div>
 EOF;
 ?>

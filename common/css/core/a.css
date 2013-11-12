@@ -16,7 +16,6 @@ a {
 	color: #333 !important;
 	font-weight: bold;
 	text-decoration: none;
-	font-size-adjust: 0.5;
 }
 a.no_exists {
 	background: url(../../media/img/no_exists.gif) top right no-repeat;

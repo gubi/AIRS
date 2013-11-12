@@ -16,19 +16,12 @@ if(is_array($foaf_interest) && count($foaf_interest) > 0) {
 
 $interests_data_div = <<<EOF
 <div id="interests_data_div" style="display: none;">
-	<form action="" method="post">
-		<input type="hidden" id="interest_no" value="1" />
-		<table cellpadding="5" cellspacing="5" style="width: 100%;" id="user_interest">
-			<tr class="user_interests">
-				$int_rows
-			</tr>
-		</table>
-		<table cellpadding="5" cellspacing="5" style="width: 100%;">
-			<tr>
-				<td colspan="5"><hr /><input name="account_data_btn" type="submit" value="Salva" /></td>
-			</tr>
-		</table>
-	</form>
+	<input type="hidden" id="interest_no" value="1" />
+	<table cellpadding="5" cellspacing="5" style="width: 100%;" id="user_interest">
+		<tr class="user_interests">
+			$int_rows
+		</tr>
+	</table>
 </div>
 EOF;
 ?>

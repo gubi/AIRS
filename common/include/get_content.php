@@ -223,6 +223,9 @@ if ($content->rowCount() > 0){
 				while ($dato_users = $users_list->fetch()){
 					$content_title = ucwords($dato_users["name"] . " " . $dato_users["lastname"]);
 					
+					$user_name = ucwords($dato_users["name"]);
+					$user_lastname = ucwords($dato_users["lastname"]);
+					$user_email = $dato_users["email"];
 					$users_level = $pdo->query("select * from `airs_levels` where level = '" . addslashes($dato_users["level"]) . "'");
 					while ($dato_level = $users_level->fetch()){
 						$content_subtitle = $dato_level["text"];
@@ -240,7 +243,7 @@ if ($content->rowCount() > 0){
 							$content_subtitle = $i18n["page_title_personal"];
 							require_once("common/tpl/manage_users/create_personal_page.tpl");
 						} else {
-							$content_body = $message->generate_error(405);
+							redirect("./" . $i18n["user_string"] . "/" . $GLOBALS["page"]);
 						}
 						break;
 					default:

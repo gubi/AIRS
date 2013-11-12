@@ -18,7 +18,6 @@
 * @SLM_is_core	true
 * @SLM_status	testing
 */
-
 $select_user = $pdo->query("select * from `airs_users` where `username` = '" . addslashes($decrypted_user) . "'");
 if ($select_user->rowCount() > 0){
 	while($dato_user = $select_user->fetch()){
