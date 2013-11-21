@@ -97,13 +97,13 @@ if(!isset($_COOKIE["iac"])){
 										<tr>
 											<th>Nome</th>
 											<td>
-												<input type="text" id="user_name" name="user_name" placeholder="Nome" required="required" value="$name" />
+												<input type="text" id="user_name" name="user_name" placeholder="Nome" required="required" value="$name" tabindex="1" />
 											</td>
 										</tr>
 										<tr>
 											<th>Cognome</th>
 											<td>
-												<input type="text" id="user_lastname" name="user_lastname" placeholder="Cognome" required="required" value="$lastname" />
+												<input type="text" id="user_lastname" name="user_lastname" placeholder="Cognome" required="required" value="$lastname" tabindex="2" />
 											</td>
 										</tr>
 									</table>
@@ -116,20 +116,20 @@ if(!isset($_COOKIE["iac"])){
 										<tr>
 											<th>Username</th>
 											<td>
-												<input type="text" autocomplete="off" id="user_username" name="user_username" oninput="check_username(this)" pattern="[A-Za-z0-9\.\-\_]{4,16}" maxlength="16" title="da 4 a 16 caratteri tra lettere, numeri e alcuni caratteri speciali (&quot;.&quot;, &quot;-&quot;, &quot;_&quot;)"  placeholder="Username" required="required" value="" />
+												<input type="text" autocomplete="off" id="user_username" name="user_username" oninput="check_username(this)" pattern="[A-Za-z0-9\.\-\_]{4,16}" maxlength="16" title="da 4 a 16 caratteri tra lettere, numeri e alcuni caratteri speciali (&quot;.&quot;, &quot;-&quot;, &quot;_&quot;)"  placeholder="Username" required="required" value="" tabindex="3" />
 											</td>
 										</tr>
 										<tr><td>&nbsp;</td></tr>
 										<tr>
 											<th>Password</th>
 											<td>
-												<input type="password" autocomplete="off" id="user_password" name="user_password" oninput="check_password(this)" placeholder="Password" required="required" value="" />
+												<input type="password" autocomplete="off" id="user_password" name="user_password" oninput="check_password(this)" placeholder="Password" required="required" value="" tabindex="4" />
 											</td>
 										</tr>
 										<tr>
 											<th>Ripeti password</th>
 											<td>
-												<input type="password" autocomplete="off" id="user_password2" name="user_password2" oninput="check_password(this)" placeholder="Ripeti password" required="required" value="" />
+												<input type="password" autocomplete="off" id="user_password2" name="user_password2" oninput="check_password(this)" placeholder="Ripeti password" required="required" value="" tabindex="5" />
 											</td>
 										</tr>
 									</table>
@@ -138,7 +138,7 @@ if(!isset($_COOKIE["iac"])){
 								<fieldset>
 									<legend class="key">Chiave di cifratura</legend>
 									<br />
-									<a target="_blank" href="./Sicurezza/Chiave_di_cifratura">Perché la chiave di cifratura</a>
+									<a target="_blank" href="./Sicurezza/Chiave_di_cifratura">Perché la chiave di cifratura?</a>
 									<br />
 									<br />
 									<table cellspacing="0" cellpadding="0" style="width: 100%;">
@@ -147,22 +147,22 @@ if(!isset($_COOKIE["iac"])){
 												<table cellspacing="0" cellpadding="0" style="width: 100%;">
 													<tr>
 														<td>
-															<textarea id="user_key_pubring" name="user_key_pubring" placeholder="Incolla il contenuto del file PGP pubring" style="width: 90%;" rows="5"></textarea>
+															<textarea id="user_key_pubring" name="user_key_pubring" placeholder="Incolla il contenuto del file PGP pubring" style="width: 90%;" rows="5" tabindex="6"></textarea>
 														</td>
 													</tr>
 												</table>
 											</td>
-											<td>oppure</td>
+											<td>- <small>oppure</small> -</td>
 											<td valign="top">
 												<table cellspacing="5" cellpadding="5" style="width: 100%;">
 													<tr>
 														<td>
-															<input type="text" autocomplete="off" id="key" name="user_key" size="36" placeholder="Nuova chiave di cifratura" required="required" value="" />
+															<input type="text" autocomplete="off" id="key" name="user_key" size="36" placeholder="Nuova chiave di cifratura" required="required" value="" tabindex="7" />
 														</td>
 													</tr>
 													<tr>
 														<td>
-															<textarea id="user_key_comment" name="user_key_comment" placeholder="Commento (opzionale)" style="width: 50%;"></textarea>
+															<textarea id="user_key_comment" name="user_key_comment" placeholder="Commento (opzionale)" style="width: 50%;" tabindex="8"></textarea>
 														</td>
 													</tr>
 												</table>
@@ -175,7 +175,7 @@ if(!isset($_COOKIE["iac"])){
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input type="submit" name="register_user_btn" id="save_feed_btn" value="Salva" />
+								<input type="submit" name="register_user_btn" id="save_feed_btn" value="Salva" tabindex="9" />
 							</td>
 						</tr>
 					</table>

@@ -24,7 +24,7 @@ input, textarea {
 	border: #ccc 1px solid;
 	padding: 3px;
 	font-family: "Ubuntu";
-	font-size: 13px;
+	font-size: 1em;
 }
 input:-moz-placeholder {
 	font-style:italic !important;
