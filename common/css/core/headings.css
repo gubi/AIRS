@@ -12,6 +12,9 @@
 * @SLM_status	ok
 */
 
+h1, h2, h3, h4, h5, h6, hr {
+	clear: left;
+}
 h1 {
 	font-size: 19px;
 }
@@ -31,7 +34,7 @@ h6 {
 	font-size: 13px;
 }
 hr {
-	background: url(../media/img/menu_hr.png) center top no-repeat;
+	background: url("../../media/img/menu_hr.png") center top no-repeat;
 	background-size: 96% 1px;
 	margin: 27px 0;
 	border: 0px none;

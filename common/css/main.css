@@ -240,6 +240,7 @@ div#legend_content p {
 #main_content {
 	box-shadow: -3px 3px 6px #999;
 	border-bottom-left-radius: 9px;
+	font-size: 15px;
 }
 #function_menu {
 	width: 100%;
@@ -692,7 +693,7 @@ div.cloud {
 	font-size: 19px;
 }
 #content_wrapper_main_content > h2 {
-	margin-top: 0;
+	/*margin-top: 0;*/
 }
 #content_wrapper_main_content p + a + h2 {
 	margin-top: 3em;
@@ -1084,7 +1085,7 @@ div.search_results h2 + span{
 	top: -14px;
 }
 div.search_results {
-	background: url(../media/img/menu_hr.png) center bottom no-repeat;
+	background: url("../media/img/menu_hr.png") center bottom no-repeat;
 	background-size: 96% 1px;
 	margin: -30px 0 30px 0;
 	border: 0px none;

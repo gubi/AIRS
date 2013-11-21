@@ -36,7 +36,7 @@ ul#panel_btn {
 		padding: 0;
 }
 ul#panel_btn.horizontal {
-	background: url(../../media/img/menu_hr.png) center bottom no-repeat;
+	background: url("../../media/img/menu_hr.png") center bottom no-repeat;
 	background-size: 96% 1px;
 	padding-bottom: 15px;
 	margin-bottom: 10px;
@@ -64,12 +64,12 @@ ul#panel_btn.vertical li:last-child {
 	margin-bottom: 0;
 }
 ul#panel_btn.horizontal li.sep {
-	background: url(../../media/img/menu_vhr.png) center center no-repeat;
+	background: url("../../media/img/menu_vhr.png") center center no-repeat;
 	background-size: 1px 96%;
 	padding: 8px 1px;
 }
 ul#panel_btn.vertical li.sep {
-	background: url(../../media/img/menu_hr.png) center bottom no-repeat;
+	background: url("../../media/img/menu_hr.png") center bottom no-repeat;
 	background-size: 96% 1px;
 	padding: 1px 8px;
 }
@@ -82,31 +82,31 @@ ul#panel_btn a:hover {
 	box-shadow: 0 0 3px #ccc;
 }
 ul#panel_btn a.open {
-	background: url("../media/img/controls_rewind_16.png") center 6px no-repeat;
+	background: url("../../media/img/controls_rewind_16.png") center 6px no-repeat;
 }
 ul#panel_btn a.close {
-	background: url("../media/img/controls_fast_forward_16.png") 7px 6px no-repeat;
+	background: url("../../media/img/controls_fast_forward_16.png") 7px 6px no-repeat;
 }
 ul#panel_btn a.pdf {
-	background: url("../media/img/document_text_16.png") 7px 6px no-repeat;
+	background: url("../../media/img/document_text_16.png") 7px 6px no-repeat;
 }
 ul#panel_btn a.print {
-	background: url("../media/img/printer_16.png") center 6px no-repeat;
+	background: url("../../media/img/printer_16.png") center 6px no-repeat;
 }
 ul#panel_btn a.toc {
-	background: url("../media/img/hierarchy_16.png") center 6px no-repeat;
+	background: url("../../media/img/hierarchy_16.png") center 6px no-repeat;
 }
 ul#panel_btn a.tocs {
-	background: url("../media/img/category_16.png") 7px 6px no-repeat;
+	background: url("../../media/img/category_16.png") 7px 6px no-repeat;
 }
 
 li.clock {
-	background: url(../../media/img/clock_16_666.png) center left no-repeat;
+	background: url("../../media/img/clock_16_666.png") center left no-repeat;
 	padding-left: 20px !important;
 	font-weight: bold;
 }
 li.comments {
-	background: url(../../media/img/comment_16_666.png) center right no-repeat;
+	background: url("../../media/img/comment_16_666.png") center right no-repeat;
 	padding-right: 23px !important;
 	font-weight: bold;
 }

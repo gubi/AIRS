@@ -21,16 +21,16 @@ p.indication {
 	margin: 2px 0;
 }
 p.time {
-	background: url("../media/img/clock_16_666.png") 6px center no-repeat;
+	background: url("../../media/img/clock_16_666.png") 6px center no-repeat;
 }
 p.filter {
-	background: url("../media/img/filter_16_666.png") 6px center no-repeat;
+	background: url("../../media/img/filter_16_666.png") 6px center no-repeat;
 }
 p.activated {
-	background: url("../media/img/copy_16_666.png") 6px center no-repeat;
+	background: url("../../media/img/copy_16_666.png") 6px center no-repeat;
 }
 p.info {
-	background: url("../media/img/information_16_666.png") 6px center no-repeat;
+	background: url("../../media/img/information_16_666.png") 6px center no-repeat;
 	padding-left: 22px;
 	color: #666;
 	margin: 20px 0;

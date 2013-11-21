@@ -66,40 +66,40 @@ legend[class], fieldset[class] legend {
 	padding-left: 27px;
 }
 legend.author, fieldset.author legend {
-	background: url(../../media/img/user_close_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/user_close_16_666.png") 6px 5px no-repeat;
 }
 legend.origin, fieldset.origin legend {
-	background: url(../../media/img/filepath_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/filepath_16_666.png") 6px 5px no-repeat;
 }
 legend.license, fieldset.license legend {
-	background: url(../../media/img/remix_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/remix_16_666.png") 6px 5px no-repeat;
 }
 legend.edit, fieldset.edit legend {
-	background: url(../../media/img/edit_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/edit_16_666.png") 6px 5px no-repeat;
 }
 legend.info, fieldset.info legend {
-	background: url(../../media/img/information_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/information_16_666.png") 6px 5px no-repeat;
 }
 legend.label, fieldset.label legend {
-	background: url(../../media/img/label_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/label_16_666.png") 6px 5px no-repeat;
 }
 legend.search, fieldset.search legend {
-	background: url(../../media/img/search_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/search_16_666.png") 6px 5px no-repeat;
 }
 legend.metadata, fieldset.metadata legend {
-	background: url(../../media/img/network_protocol_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/network_protocol_16_666.png") 6px 5px no-repeat;
 }
 legend.mail, fieldset.mail legend {
-	background: url(../../media/img/mail_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/mail_16_666.png") 6px 5px no-repeat;
 }
 legend.feed, fieldset.feed legend {
-	background: url(../../media/img/feed_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/feed_16_666.png") 6px 5px no-repeat;
 }
 legend.rdf, fieldset.rdf legend {
-	background: url(../../media/img/rdf_document_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/rdf_document_16_666.png") 6px 5px no-repeat;
 }
 legend.groups, fieldset.groups legend {
-	background: url(../../media/img/combine_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/combine_16_666.png") 6px 5px no-repeat;
 }
 legend.author:hover, 
 fieldset.author legend:hover
@@ -114,17 +114,17 @@ fieldset.label legend:hover {
 	cursor: pointer;
 }
 legend.clock, fieldset.clock legend {
-	background: url(../../media/img/clock_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/clock_16_666.png") 6px 5px no-repeat;
 }
 legend.system, fieldset.system legend {
-	background: url(../../media/img/server_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/server_16_666.png") 6px 5px no-repeat;
 }
 legend.source, legend.query, fieldset.source legend, fieldset.query legend {
-	background: url(../../media/img/source_code_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/source_code_16_666.png") 6px 5px no-repeat;
 }
 legend.form, fieldset.form legend {
-	background: url(../../media/img/text_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/text_16_666.png") 6px 5px no-repeat;
 }
 legend.key, fieldset.key legend {
-	background: url(../../media/img/security_closed_16_666.png) 6px 5px no-repeat;
+	background: url("../../media/img/security_closed_16_666.png") 6px 5px no-repeat;
 }
