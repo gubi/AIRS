@@ -27,7 +27,7 @@ if(!isset($_POST["captcha_res"]) || $_POST["captcha_res"] !== $_COOKIE["rs"]){
 	require_once("common/tpl/manage_users/lost_data/form_username.tpl");
 } else {
 	require_once("common/include/funcs/_blowfish.php");
-	$key = $config["system"]["key"];
+	$key = $rsa_encrypted;
 	$encrypted_key = PMA_blowfish_encrypt($_POST["key"], $key);
 	$encrypted_pass = PMA_blowfish_encrypt($_POST["password"], $encrypted_key);
 	

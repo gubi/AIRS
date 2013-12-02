@@ -31,7 +31,15 @@ switch($origin){
 }
 require_once($funcs_path . "/funcs/_converti_data.php");
 require_once($funcs_path . "/funcs/_blowfish.php");
-$key = $config["system"]["key"];
+require_once($funcs_path . "/classes/class.rsa.php");
+
+$rsa = new rsa();
+$fb = fopen($funcs_path . "/conf/rsa_2048_pub.pem", "r");
+$Skey = fread($fb, 8192);
+fclose($fb);
+$Stoken = $rsa->get_token($Skey);
+$rsa_encrypted = $rsa->simple_private_encrypt($Stoken);
+$key = $rsa_encrypted;
 $crypted_user_key = $_COOKIE["iack"];
 $decrypted_user = PMA_blowfish_decrypt($_COOKIE["iac"], $_COOKIE["iack"]);
 

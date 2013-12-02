@@ -24,8 +24,16 @@ require_once("../../.mysql_connect.inc.php");
 
 if (isset($_GET["k1"]) && trim($_GET["k1"]) !== "" && isset($_GET["k2"]) && trim($_GET["k2"]) !== ""){
 	require_once("../_blowfish.php");
+	require_once("../../classes/class.rsa.php");
+
+	$rsa = new rsa();
+	$fb = fopen("../../conf/rsa_2048_pub.pem", "r");
+	$Skey = fread($fb, 8192);
+	fclose($fb);
+	$Stoken = $rsa->get_token($Skey);
+	$rsa_encrypted = $rsa->simple_private_encrypt($Stoken);
 	
-	$key = $config["system"]["key"];
+	$key = $rsa_encrypted;
 	$encrypted_key = PMA_blowfish_encrypt(urldecode($_GET["k2"]), $key);
 	$crypted_user = PMA_blowfish_encrypt(urldecode($_GET["u"]), $encrypted_key);
 	if (urldecode($_GET["k1"]) !== $encrypted_key){

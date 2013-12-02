@@ -22,7 +22,7 @@
 $end = false;
 if (isset($_POST["create_new_key_btn"])){
 	require_once("common/include/funcs/_blowfish.php");
-	$key = $config["system"]["key"];
+	$key = $rsa_encrypted;
 	$encrypted_pass = PMA_blowfish_encrypt($_POST["password"], $_COOKIE["iack"]);
 	
 	if ($_POST["newkey"] == $_POST["key"]){

@@ -22,7 +22,7 @@
 if(!isset($_COOKIE["iac"])){
 	if (isset($_COOKIE["ias"])){
 		require_once("common/include/funcs/_blowfish.php");
-		$key = $config["system"]["key"];
+		$key = $rsa_encrypted;
 		$decrypted_cookie = PMA_blowfish_decrypt($_COOKIE["ias"], $key);
 		$parsed_cookie = explode("~", $decrypted_cookie);
 		$email = $parsed_cookie[0];

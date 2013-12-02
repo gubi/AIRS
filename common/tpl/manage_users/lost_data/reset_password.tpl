@@ -54,7 +54,7 @@ Form_ceck_registration;
 } else {
 	require_once("common/include/funcs/_blowfish.php");
 	
-	$key = $config["system"]["key"];
+	$key = $rsa_encrypted;
 	$token = PMA_blowfish_decrypt($_POST["token"], $key);
 	
 	$parsed_token = explode("~", $token);

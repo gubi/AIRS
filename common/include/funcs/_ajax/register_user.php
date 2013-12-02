@@ -24,9 +24,17 @@ if (isset($_COOKIE["ias"])){
 	require_once("../_blowfish.php");
 	require_once("../mail.send.php");
 	require_once("../../.mysql_connect.inc.php");
+	require_once("../../classes/class.rsa.php");
+
+	$rsa = new rsa();
+	$fb = fopen("../../conf/rsa_2048_pub.pem", "r");
+	$Skey = fread($fb, 8192);
+	fclose($fb);
+	$Stoken = $rsa->get_token($Skey);
+	$rsa_encrypted = $rsa->simple_private_encrypt($Stoken);
 	
 	$config = parse_ini_file("../../conf/airs.conf", 1);
-	$key = $config["system"]["key"];
+	$key = $rsa_encrypted;
 	$decrypted_cookie = PMA_blowfish_decrypt($_COOKIE["ias"], $key);
 	$parsed_cookie = explode("~", $decrypted_cookie);
 	$email = $parsed_cookie[0];

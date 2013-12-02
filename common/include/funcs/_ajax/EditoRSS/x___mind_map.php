@@ -2,9 +2,17 @@
 header('Content-Type: text/html; charset=utf-8'); 
 
 require_once("../_blowfish.php");
+require_once("../../classes/class.rsa.php");
+
+$rsa = new rsa();
+$fb = fopen("../../conf/rsa_2048_pub.pem", "r");
+$Skey = fread($fb, 8192);
+fclose($fb);
+$Stoken = $rsa->get_token($Skey);
+$rsa_encrypted = $rsa->simple_private_encrypt($Stoken);
 $absolute_path = str_replace(array("/web/htdocs/", "/common/include/funcs/ext/mind_map.php", "/home"), array("http://", "", ""), realpath(__FILE__));
 
-$key = $config["system"]["key"];
+$key = $rsa_encrypted;
 $crypted_user_key = $_COOKIE["iack"];
 $decrypted_user = PMA_blowfish_decrypt($_COOKIE["iac"], $_COOKIE["iack"]);
 $type = $_GET["type"];
