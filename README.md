@@ -1,5 +1,5 @@
 <br />
-<center>![logo AIRS](https://airs.inran.it/common/media/img/logo_airs.png)</center>
+<p align="center"><img alt="Logo AIRS" src="https://raw.github.com/gubi/AIRS/master/common/media/img/logo_airs.png" /></p>
 <br />
 <br />
 
