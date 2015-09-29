@@ -12,3 +12,6 @@ This is just an alpha version of the software.
 Please, read the [Wiki](https://github.com/gubi/AIRS/wiki) for more instructions about the project, in which license is released and how to install it on your Server
 
 ***
+
+
+[![Join the chat at https://gitter.im/gubi/AIRS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gubi/AIRS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
